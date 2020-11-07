@@ -53,8 +53,35 @@ const UserProfileSchema = new mongoose.Schema({
                 required: true
             }
         }
-    ]
+    ],
+    posts: [
+        {
+            user: {
+                type: mongoose.Types.ObjectId,
+                ref: 'post'
+            }
+        }
+    ],
+    followers: [
+        {
+            follower: {
+                type: mongoose.Types.ObjectId,
+                ref: 'user'
+            }
+        }
+    ],
+    following: [
+        {
+            follower: {
+                type: mongoose.Types.ObjectId,
+                ref: 'user'
+            }
+        }
+    ],
+    photo: {
+
+    }
 
 }, {collection: 'UserProfile', versionKey: false});
 
-module.exports = mongoose.model('UserProfile', UserProfileSchema);
+module.exports = mongoose.model('userProfile', UserProfileSchema);

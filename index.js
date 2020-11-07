@@ -10,7 +10,7 @@ app.use(express.json({ extended: true }));
 
 const PORT = config.get('port') || 5000;
 
-connectDB();
+connectDB().then(() => console.log('MongoDB connected...'));
 
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
 

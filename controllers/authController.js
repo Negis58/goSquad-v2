@@ -1,5 +1,7 @@
 const authService = require('../services/authService');
 const {validationResult} = require('express-validator');
+const config = require('config');
+
 
 exports.register = async function(req,res) {
     try {
@@ -33,3 +35,24 @@ exports.login = async function(req,res) {
     }
 };
 
+exports.forgotPassword = async function(req,res) {
+    try {
+        if (!req.body.email) {
+            res.status(500).json({message: 'Для восстановления пароля требуется электронная почта'});
+        }
+        console.log(req.body.email);
+        let response = await authService.forgotPassword(req.body.email);
+        res.status(response.status).json(response);
+    } catch (e) {
+        res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
+    }
+};
+
+exports.resetPassword = async function(req,res) {
+    try {
+        let response = await authService.resetPassword(req.body.token, req.body.password);
+        res.status(response.status).json(response);
+    } catch (e) {
+        res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
+    }
+};

@@ -13,4 +13,14 @@ router.post('/login', [
     check('password', 'Введите пароль').exists()
 ], authController.login);
 
+router.post('/forgot-password', [
+    check('email', 'Некорректный email').isEmail(),
+    check('password', 'Введите пароль').exists()
+], authController.forgotPassword);
+
+router.post('/reset-password', [
+    check('password', 'Введите пароль').exists()
+], authController.resetPassword);
+
+
 module.exports = router;
