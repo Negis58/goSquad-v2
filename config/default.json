@@ -1,0 +1,8 @@
+{
+  "port": 5000,
+  "mongoUri": "mongodb+srv://user:Mypass@cluster0.oxpya.mongodb.net/testproject?retryWrites=true&w=majority",
+  "jwtSecret": "sdfjksdfsdfsd",
+  "forgotPasswordURL": "http://localhost:5000",
+  "mailerEmail": "gosquadtest@gmail.com",
+  "mailerPassword": "GoSquadTest123"
+}
