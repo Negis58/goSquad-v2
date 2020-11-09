@@ -37,10 +37,16 @@ exports.login = async function(req,res) {
 
 exports.forgotPassword = async function(req,res) {
     try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(400).json({
+                errors: errors.array(),
+                message: 'Некорректные данные при входе в систему'
+            });
+        }
         if (!req.body.email) {
             res.status(500).json({message: 'Для восстановления пароля требуется электронная почта'});
         }
-        console.log(req.body.email);
         let response = await authService.forgotPassword(req.body.email);
         res.status(response.status).json(response);
     } catch (e) {
