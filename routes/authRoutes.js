@@ -8,7 +8,7 @@ router.post('/register', [
     check('password', 'Минимальная длина пароль должна составлять 8 символов').isLength({min: 8})
 ], authController.register);
 
-router.post('/login', [
+router.post('/auth', [
     check('username', '').exists(),
     check('password', 'Введите пароль').exists()
 ], authController.login);

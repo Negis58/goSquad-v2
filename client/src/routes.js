@@ -3,8 +3,12 @@ import {Switch, Route, Redirect} from "react-router-dom";
 import {DashboardPage} from "./pages/DashboardPage";
 import {PostPage} from "./pages/PostPage";
 import {ProfilesPage} from "./pages/ProfilesPage";
-import {AuthPage} from "./pages/AuthPage";
-import {MainPage} from "./pages/main/MainPage";
+import {MainPage} from "./components/MainPage";
+import {RegisterPage} from "./components/auth/Register";
+import {LoginPage} from "./components/auth/Login";
+import {ForgotPassword} from "./components/auth/ForgotPassword";
+import {Navbar} from "./components/layout/Navbar";
+
 
 export const useRoutes = (isAuthenticated) => {
     if(isAuthenticated) {
@@ -22,6 +26,15 @@ export const useRoutes = (isAuthenticated) => {
                 <Route path="/" exact>
                     <MainPage/>
                 </Route>
+                <Route path="/register" exact>
+                    <RegisterPage/>
+                </Route>
+                <Route path="/login" exact>
+                    <LoginPage/>
+                </Route>
+                <Route path="/forgot-password" exact>
+                    <ForgotPassword/>
+                </Route>
             </Switch>
         );
     }
@@ -29,6 +42,9 @@ export const useRoutes = (isAuthenticated) => {
         <Switch>
             <Route path="/" exact>
                <MainPage/>
+            </Route>
+            <Route path="/register" exact>
+                <RegisterPage/>
             </Route>
             <Redirect to="/"/>
         </Switch>
