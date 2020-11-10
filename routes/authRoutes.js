@@ -8,7 +8,7 @@ router.post('/register', [
     check('password', 'Минимальная длина пароль должна составлять 8 символов').isLength({min: 8})
 ], authController.register);
 
-router.post('/auth', [
+router.post('/login', [
     check('username', '').exists(),
     check('password', 'Введите пароль').exists()
 ], authController.login);
@@ -22,5 +22,6 @@ router.post('/reset-password', [
     check('password', 'Введите пароль').exists()
 ], authController.resetPassword);
 
+router.post('/refresh-token', authController.refreshToken);
 
 module.exports = router;

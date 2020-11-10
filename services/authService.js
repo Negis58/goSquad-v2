@@ -6,6 +6,9 @@ const User = require('../models/User');
 const ApiResponse = require('../util/response');
 const forgotPasswordURL = config.get('forgotPasswordURL');
 const mailerService = require('../services/mailerService');
+const secret = config.get('jwtToken.secret');
+const Token = require('../models/Token');
+const authHelper = require('../util/authHelper');
 
 async function singUp(data) {
         const candidate = await User.findOne({username: data.username});
@@ -33,9 +36,10 @@ async function login(username, password) {
     if (!validPassword) {
         return new ApiResponse(401, 'error', {err: 'Неверный пароль'});
     }
-    const token = jwt.sign({id: user._id}, config.get('jwtSecret'), {expiresIn: '2d'});
+    //const token = jwt.sign({id: user._id}, config.get('jwtSecret'), {expiresIn: '2d'});
+    const tokens = await updateTokens(user._id);
     let result = {
-        "access_token": token,
+        tokens,
         ...user._doc
     };
     return new ApiResponse(200, 'success', result);
@@ -76,5 +80,28 @@ async function resetPassword(token, newPassword) {
 
 }
 
+async function updateTokens(userId) {
+    const accessToken = await authHelper.generateAccessToken(userId);
+    const refreshToken = await authHelper.generateRefreshToken();
+    return await authHelper.replaceDbRefreshToken(refreshToken.id, userId)
+        .then(() => ({
+            accessToken,
+            refreshToken: refreshToken.token
+        }));
+}
 
-module.exports = {singUp, login, forgotPassword, resetPassword};
+async function refreshToken(payload) {
+    await Token.findOne({tokenId: payload.id}).exec()
+        .then((token) => {
+            console.log(token)
+            if (token === null) {
+                throw new Error('Неверный токен');
+            }
+            return updateTokens(token.userId);
+        }).then(tokens => {
+            return new ApiResponse('200','success',{tokens});
+        }).catch((err) => new ApiResponse(400,'error',
+            {message: 'Что-то пошло не так, попробуйте снова'}));
+}
+
+module.exports = {singUp, login, forgotPassword, resetPassword, refreshToken};

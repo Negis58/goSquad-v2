@@ -15,4 +15,4 @@ connectDB().then(() => console.log('MongoDB connected...'));
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
 
 app.use('/', userRoute);
-app.use('/', authRoute);
+app.use('/api', authRoute);

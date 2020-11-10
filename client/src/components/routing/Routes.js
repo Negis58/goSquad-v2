@@ -1,13 +1,13 @@
 import React from 'react';
 import {Switch, Route, Redirect} from "react-router-dom";
-import {DashboardPage} from "./pages/DashboardPage";
-import {PostPage} from "./pages/PostPage";
-import {ProfilesPage} from "./pages/ProfilesPage";
-import {MainPage} from "./components/MainPage";
-import {RegisterPage} from "./components/auth/Register";
-import {LoginPage} from "./components/auth/Login";
-import {ForgotPassword} from "./components/auth/ForgotPassword";
-import {Navbar} from "./components/layout/Navbar";
+import {DashboardPage} from "../../pages/DashboardPage";
+import {PostPage} from "../../pages/PostPage";
+import {ProfilesPage} from "../../pages/ProfilesPage";
+import {MainPage} from "../MainPage";
+import {RegisterPage} from "../auth/Register";
+import {LoginPage} from "../auth/Login";
+import {ForgotPassword} from "../auth/ForgotPassword";
+import {Navbar} from "../layout/Navbar";
 
 
 export const useRoutes = (isAuthenticated) => {
