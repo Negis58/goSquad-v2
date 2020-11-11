@@ -1,29 +1,26 @@
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const config = require('config');
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const ApiResponse = require('../util/response');
 const forgotPasswordURL = config.get('forgotPasswordURL');
 const mailerService = require('../services/mailerService');
-const secret = config.get('jwtToken.secret');
-const Token = require('../models/Token');
 const authHelper = require('../util/authHelper');
 
 async function singUp(data) {
-        const candidate = await User.findOne({username: data.username});
-        if (candidate) {
-            return new ApiResponse(401, 'error', {err: 'Такой пользователь уже существует'});
-        }
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(data.password, salt);
-        const user = new User({
-            username: data.username,
-            email: data.email,
-            password: hashedPassword
-        });
-        const result = await user.save();
-        return new ApiResponse(200, 'success', result);
+    const candidate = await User.findOne({username: data.username});
+    if (candidate) {
+        return new ApiResponse(401, 'error', {err: 'Такой пользователь уже существует'});
+    }
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(data.password, salt);
+    const user = new User({
+        username: data.username,
+        email: data.email,
+        password: hashedPassword
+    });
+    const result = await user.save();
+    return new ApiResponse(200, 'success', result);
 
 }
 
@@ -53,7 +50,7 @@ async function forgotPassword(email) {
     }
     console.log(user);
     let token = crypto.randomBytes(16).toString('hex');
-    await User.updateOne({ _id: user.id }, { $set: { resetToken: token }});
+    await User.updateOne({_id: user.id}, {$set: {resetToken: token}});
     let text = 'Вы получили это письмо, потому что вы запросили сброс пароля для своей учетной записи. \n\n' +
         'Пожалуйста, перейдите по ссылке или вставьте ее в своей браузер,' +
         'чтобы завершить процесс восстановления пароля: \n\n' + forgotPasswordURL + '/new-password/' + token +
@@ -80,28 +77,15 @@ async function resetPassword(token, newPassword) {
 
 }
 
-async function updateTokens(userId) {
-    const accessToken = await authHelper.generateAccessToken(userId);
-    const refreshToken = await authHelper.generateRefreshToken();
-    return await authHelper.replaceDbRefreshToken(refreshToken.id, userId)
+const updateTokens = (userId) => {
+    const accessToken = authHelper.generateAccessToken(userId);
+    const refreshToken = authHelper.generateRefreshToken();
+    return authHelper.replaceDbRefreshToken(refreshToken.id, userId)
         .then(() => ({
             accessToken,
             refreshToken: refreshToken.token
         }));
 }
 
-async function refreshToken(payload) {
-    await Token.findOne({tokenId: payload.id}).exec()
-        .then((token) => {
-            console.log(token)
-            if (token === null) {
-                throw new Error('Неверный токен');
-            }
-            return updateTokens(token.userId);
-        }).then(tokens => {
-            return new ApiResponse('200','success',{tokens});
-        }).catch((err) => new ApiResponse(400,'error',
-            {message: 'Что-то пошло не так, попробуйте снова'}));
-}
 
-module.exports = {singUp, login, forgotPassword, resetPassword, refreshToken};
+module.exports = {singUp, login, forgotPassword, resetPassword, updateTokens};

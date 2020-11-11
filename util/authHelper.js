@@ -4,7 +4,7 @@ const secret = config.get('jwtToken.secret');
 const {uuid} = require('uuidv4');
 const Token = require('../models/Token');
 
-const generateAccessToken = async function(userId) {
+const generateAccessToken = (userId) => {
     const payload = {
         userId,
         type: config.get('jwtToken.tokens.access.type')
@@ -13,7 +13,7 @@ const generateAccessToken = async function(userId) {
     return jwt.sign(payload, secret, options);
 };
 
-const generateRefreshToken = async function() {
+const generateRefreshToken = () => {
     const payload = {
         id: uuid(),
         type: config.get('jwtToken.tokens.refresh.type')
@@ -25,9 +25,9 @@ const generateRefreshToken = async function() {
     }
 };
 
-const replaceDbRefreshToken = async function(tokenId, userId) {
-    return Token.findOneAndRemove({userId}).exec()
-        .then(() => Token.create({tokenId, userId}));
+const replaceDbRefreshToken = (tokenId, userId) => {
+    return Token.findOneAndRemove({userId})
+        .exec().then(() => Token.create({tokenId, userId}));
 };
 
 module.exports = { generateAccessToken, generateRefreshToken, replaceDbRefreshToken };
