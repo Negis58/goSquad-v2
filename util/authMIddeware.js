@@ -12,7 +12,6 @@ exports.authValidate = async function(req,res, next) {
         try {
             const payload = jwt.verify(token, secret);
             req.user = payload;
-            console.log(req.user);
             if (payload.type !== 'access') {
                 res.status(401).json({message: "Неверный токен"});
                 return;

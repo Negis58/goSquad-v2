@@ -6,11 +6,11 @@
     "tokens": {
       "access": {
         "type": "access",
-        "expiresIn": "10m"
+        "expiresIn": "1d"
       },
       "refresh": {
         "type": "refresh",
-        "expiresIn": "10m"
+        "expiresIn": "1d"
       }
     }
   },
