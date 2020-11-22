@@ -5,6 +5,7 @@ import Landing from './components/layout/Landing/Main';
 import Routes from './components/routing/Routes';
 import {LOGOUT} from './actions/types';
 import './App.css';
+import './styles/index.scss'
 // Redux
 import {Provider} from 'react-redux';
 import store from './store';

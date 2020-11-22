@@ -5,6 +5,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    avatar: {
+        type: String,
+        default: 'https://gravatar.com/avatar/d2486fcf29a4f046af3086770549f1a4?d=mm&r=pg&s=200'
+    },
     email: {
         type: String,
         required: true,

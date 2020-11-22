@@ -1,4 +1,3 @@
-const userService = require('../services/userService');
 const {validationResult} = require('express-validator');
 const UserProfile = require('../models/UserProfile');
 const User = require('../models/User');
@@ -10,8 +9,7 @@ const Post = require('../models/Post');
 exports.getMyProfile = async function (req, res) {
     try {
         let profile = await UserProfile.findOne({user: req.user.userId})
-            .populate('user', ['username']);
-
+            .populate('user', ['username', 'avatar']);
         if (!profile) {
             res.status(400).json({message: 'У этого пользователя нет профиля'});
         }
@@ -26,7 +24,7 @@ exports.getMyProfile = async function (req, res) {
 
 exports.getUsers = async function (req, res) {
     try {
-        let profiles = await UserProfile.find().populate('user', ['username']);
+        let profiles = await UserProfile.find().populate('user', ['username', 'avatar']);
         res.status(200).json(profiles);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
@@ -39,7 +37,7 @@ exports.getUsers = async function (req, res) {
 exports.getUserById = async function (req, res) {
     try {
         let userProfile = await UserProfile.findOne({user: req.params.id})
-            .populate('user', ['username']);
+            .populate('user', ['username', 'avatar']);
         if (!userProfile) {
             res.status(400).json({err: 'Профиль не найден'});
         }

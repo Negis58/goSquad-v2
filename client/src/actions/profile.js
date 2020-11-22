@@ -33,7 +33,6 @@ export const getProfiles = () => async (dispatch) => {
 
   try {
     const res = await api.get("/users");
-
     dispatch({
       type: GET_PROFILES,
       payload: res.data,

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const ProfileItem = ({
   profile: {
-    user: { _id, name, avatar },
+    user: { _id, username, avatar },
     status,
     location,
     platform,
@@ -14,11 +14,11 @@ const ProfileItem = ({
     <div className="profile bg-light">
       <img src={avatar} alt="" className="round-img" />
       <div>
-        <h2>{name}</h2>
+        <h2>{username}</h2>
         <p>{status}</p>
         <p className="my-6">{location && <span>{location}</span>}</p>
         <Link to={`/profile/${_id}`} className="btn btn-primary">
-          Открыть профиль игрока
+          View Profile
         </Link>
       </div>
       <ul>

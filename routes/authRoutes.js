@@ -25,6 +25,7 @@ router.post('/forgot-password', [
     check('password', 'Введите пароль').exists()
 ], authController.forgotPassword);
 
+
 router.post('/reset-password', [
     check('password', 'Введите пароль').exists()
 ], authController.resetPassword);
