@@ -21,7 +21,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
       ) : (
         <Fragment>
           <Link to="/profiles" className="btn btn-light">
-            Back To Profiles
+            Назад к профилю
           </Link>
           {auth.isAuthenticated &&
             auth.loading === false &&
@@ -34,7 +34,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">
-              <h2 className="text-primary">Recently Played Games</h2>
+              <h2 className="text-primary">Недавно сыгранные игры</h2>
               {profile.recent.length > 0 ? (
                 <Fragment>
                   {profile.recent.map((recent) => (
@@ -42,12 +42,12 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                   ))}
                 </Fragment>
               ) : (
-                <h4>No recently played games</h4>
+                <h4>Нет недавно сыгранных игр</h4>
               )}
             </div>
 
             <div className="profile-edu bg-white p-2">
-              <h2 className="text-primary">Favorite Games</h2>
+              <h2 className="text-primary">Любимые игры</h2>
               {profile.favorite.length > 0 ? (
                 <Fragment>
                   {profile.favorite.map((favorite) => (
@@ -55,7 +55,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                   ))}
                 </Fragment>
               ) : (
-                <h4>No favorite games</h4>
+                <h4>Нет любимых игр</h4>
               )}
             </div>
           </div>

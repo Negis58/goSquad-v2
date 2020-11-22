@@ -4,9 +4,16 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const secret = config.get('jwtToken.secret');
 const Token = require('../models/Token');
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+
+
+// Регистрация пользователя
+// @Route post api/register
 
 exports.register = async function (req, res) {
     try {
+        const {username, email, password} = req.body;
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.status(400).json({
@@ -14,15 +21,32 @@ exports.register = async function (req, res) {
                 message: 'Некорректные данные при регистрации'
             });
         }
-        let response = await authService.singUp(req.body);
-        res.status(response.status).json(response);
+        const candidate = await User.findOne({username: username});
+        if (candidate) {
+            res.status(401).json({message: 'Такой пользователь уже существует'});
+        }
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const user = new User({
+            username: username,
+            email: email,
+            password: hashedPassword
+        });
+        const result = await user.save();
+
+        const token = await authService.updateTokens(result._id);
+        res.status(200).json(token);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }
 };
 
+// Аутентификация пользователя с помощью jwt токена
+// @Route post api/login
+
 exports.login = async function (req, res) {
     try {
+        const {username, password} = req.body;
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.status(400).json({
@@ -30,12 +54,42 @@ exports.login = async function (req, res) {
                 message: 'Некорректные данные при входе в систему'
             });
         }
-        let response = await authService.login(req.body.username, req.body.password);
-        res.status(response.status).json(response);
+        const user = await User.findOne({username});
+        if (!user) {
+            res.status(401).json({message: 'Пользователь не найден'});
+        }
+        const validPassword = await bcrypt.compare(password, user.password);
+
+        if (!validPassword) {
+            res.status(401).json({message: 'Неверный пароль'});
+        }
+        //const token = jwt.sign({id: user._id}, config.get('jwtSecret'), {expiresIn: '2d'});
+        const tokens = await authService.updateTokens(user._id);
+        let result = {
+            tokens,
+            /*...user._doc*/
+        };
+        res.status(200).json(result);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }
 };
+
+// Аутентификация пользователя с помощью jwt токена
+// @Route get api/login
+
+exports.loginGetProfile = async function (req,res) {
+  try {
+      console.log(req.user.userId);
+      const user = await User.findById(req.user.userId).select('-password');
+      res.json(user);
+  }  catch (e) {
+      res.status(500).json({message: 'Что-то пошло не так попробуйте снова'});
+  }
+};
+
+
+// Восстановление пароля пользователя по email
 
 exports.forgotPassword = async function (req, res) {
     try {
@@ -64,6 +118,9 @@ exports.resetPassword = async function (req, res) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }
 };
+
+
+// Обновление jwt токена
 
 exports.refreshToken = async function (req, res) {
     const {refreshToken} = req.body;

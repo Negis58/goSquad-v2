@@ -12,8 +12,10 @@ const PORT = config.get('port') || 5000;
 
 connectDB().then(() => console.log('MongoDB connected...'));
 
+
+
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
 
-app.use('/', userRoute);
+app.use('/api', userRoute);
 app.use('/api', authRoute);
 app.use('/api', postRoute);

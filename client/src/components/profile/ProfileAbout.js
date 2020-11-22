@@ -16,7 +16,7 @@ const ProfileAbout = ({
         <div className="line" />
       </Fragment>
     )}
-    <h2 className="text-primary">Platform</h2>
+    <h2 className="text-primary">Платформы</h2>
     <div className="platform">
       {platform.map((skill, index) => (
         <div key={index} className="p-1">

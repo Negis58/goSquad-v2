@@ -14,7 +14,7 @@ const Favorite = ({ favorite, deleteFavorite }) => {
           onClick={() => deleteFavorite(fav._id)}
           className="btn btn-danger"
         >
-          Delete
+          Удалить
         </button>
       </td>
     </tr>
@@ -22,13 +22,13 @@ const Favorite = ({ favorite, deleteFavorite }) => {
 
   return (
     <Fragment>
-      <h2 className="my-2">Favorite Games</h2>
+      <h2 className="my-2">Любимые игры</h2>
       <table className="table">
         <thead>
           <tr>
             <th>Title</th>
-            <th className="hide-sm">Platform</th>
-            <th className="hide-sm">Hours</th>
+            <th className="hide-sm">Платформы</th>
+            <th className="hide-sm">Часы проведенные в игре</th>
             <th />
           </tr>
         </thead>

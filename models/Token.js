@@ -5,7 +5,7 @@ const tokenSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    userId: {
+    id: {
         type: String
     }
 }, {collection: 'Token', versionKey: false});

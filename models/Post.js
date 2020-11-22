@@ -22,6 +22,9 @@ const postSchema = new mongoose.Schema({
         text: {
             type: String
         },
+        username: {
+          type: String
+        },
         commentedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'user'
@@ -33,7 +36,7 @@ const postSchema = new mongoose.Schema({
     }],
     likes: [{
         likedBy: {
-            type: mongoose.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'user'
         }
     }]

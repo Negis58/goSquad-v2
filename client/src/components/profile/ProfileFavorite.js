@@ -5,10 +5,10 @@ const ProfileFavorite = ({ favorite: { title, platform, hours } }) => (
   <div>
     <h3 className="text-dark">{title}</h3>
     <p>
-      <strong>Platform: </strong> {platform}
+      <strong>Платформы: </strong> {platform}
     </p>
     <p>
-      <strong>Hours Played: </strong> {hours}
+      <strong>Проведенные часы в игре: </strong> {hours}
     </p>
   </div>
 );

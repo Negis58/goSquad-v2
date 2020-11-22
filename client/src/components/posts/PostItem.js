@@ -21,7 +21,7 @@ const PostItem = ({
     <div>
       <p className="my-1">{text}</p>
       <p className="post-date">
-        Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
+        Отправлено в  <Moment format="YYYY/MM/DD">{date}</Moment>
       </p>
       <Fragment>
         <button
@@ -40,7 +40,7 @@ const PostItem = ({
           <i className="fas fa-thumbs-down" />
         </button>
         <Link to={`/posts/${_id}`} className="btn btn-primary">
-          Discussion{" "}
+          Комментарии{" "}
           {comments.length > 0 && (
             <span className="comment-count">{comments.length}</span>
           )}

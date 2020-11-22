@@ -3,12 +3,13 @@ const jwt = require('jsonwebtoken');
 const secret = config.get('jwtToken.secret');
 
 exports.authValidate = async function(req,res, next) {
-    const authorizationHeader = req.headers.authorization;
-    if (!authorizationHeader) {
+    const token = req.header("x-auth-token");
+    //const authorizationHeader = req.headers.authorization;
+    if (!token) {
         res.status(401).json({ message: "Нет авторизации"});
         return;
     } else {
-        const token = req.headers.authorization.split(' ')[1];
+        //const token = req.headers.authorization.split(' ')[1];
         try {
             const payload = jwt.verify(token, secret);
             req.user = payload;

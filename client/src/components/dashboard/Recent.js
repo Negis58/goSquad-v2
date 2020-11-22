@@ -14,7 +14,7 @@ const Recent = ({ recent, deleteRecent }) => {
           onClick={() => deleteRecent(rec._id)}
           className="btn btn-danger"
         >
-          Delete
+          Удалить
         </button>
       </td>
     </tr>
@@ -22,7 +22,7 @@ const Recent = ({ recent, deleteRecent }) => {
 
   return (
     <Fragment>
-      <h2 className="my-2">Recently Played Games</h2>
+      <h2 className="my-2">Недавно сыгранные игры</h2>
       <table className="table">
         <thead>
           <tr>

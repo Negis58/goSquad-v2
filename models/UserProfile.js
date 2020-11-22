@@ -28,8 +28,8 @@ const UserProfileSchema = new mongoose.Schema({
         required: true
     },
     platform: {
-      type: [String],
-      required: true
+        type: [String],
+        required: true
     },
     social: {
         discord: {
@@ -78,9 +78,23 @@ const UserProfileSchema = new mongoose.Schema({
             }
         }
     ],
-    photo: {
-
-    }
+    photo: {},
+    recent: [
+        {
+            title: {
+                type: String,
+                required: true,
+            },
+            platform: {
+                type: String,
+                required: true,
+            },
+            hours: {
+                type: String,
+                required: true,
+            },
+        },
+    ]
 
 }, {collection: 'UserProfile', versionKey: false});
 

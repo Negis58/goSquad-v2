@@ -2,54 +2,42 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { logout } from "../../actions/auth";
+import { logout } from "../../../actions/auth";
+import './Navbar.scss';
 
 const Navbar = ({ auth: { isAuthenticated }, logout }) => {
     const authLinks = (
         <ul>
             <li>
-                <Link to="/profiles">Gamers</Link>
+                <Link to="/profiles">Игроки</Link>
             </li>
             <li>
-                <Link to="/posts">Posts</Link>
+                <Link to="/posts">Посты</Link>
             </li>
             <li>
                 <Link to="/dashboard">
-                    <i className="fas fa-user" />{" "}
-                    <span className="hide-sm">Dashboard</span>
+                    <i/>{" "}
+                    <span>Профиль</span>
                 </Link>
             </li>
             <li>
                 <a onClick={logout} href="#!">
-                    <i className="fas fa-sign-out-alt" />{" "}
-                    <span className="hide-sm">Logout</span>
+                    <i/>{" "}
+                    <span>Выйти</span>
                 </a>
             </li>
         </ul>
     );
 
-    const guestLinks = (
-        <ul>
-            <li>
-                <Link to="/profiles">Gamers</Link>
-            </li>
-            <li>
-                <Link to="/register">Register</Link>
-            </li>
-            <li>
-                <Link to="/login">Login</Link>
-            </li>
-        </ul>
-    );
 
     return (
-        <nav className="navbar bg-dark">
+        <nav className="navbar ">
             <h1>
                 <Link to="/">
-                    <i className="fas fa-gamepad" /> Gamer Pal
+                    <i className="fas fa-gamepad"/> GOSQUAD
                 </Link>
             </h1>
-            <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+            {authLinks}
         </nav>
     );
 };

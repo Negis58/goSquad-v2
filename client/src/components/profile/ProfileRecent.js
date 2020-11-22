@@ -5,10 +5,10 @@ const ProfileRecent = ({ recent: { title, platform, hours } }) => (
   <div>
     <h3 className="text-dark">{title}</h3>
     <p>
-      <strong>Platform: </strong> {platform}
+      <strong>Платформы: </strong> {platform}
     </p>
     <p>
-      <strong>Hours Played: </strong> {hours}
+      <strong>Часы проведенные в игре: </strong> {hours}
     </p>
   </div>
 );

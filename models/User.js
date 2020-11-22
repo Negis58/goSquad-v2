@@ -17,10 +17,18 @@ const UserSchema = new mongoose.Schema({
     resetToken: {
         type: String
     },
-    date: {
+    confirmHash: {
+        type: String
+    },
+    confirmed: {
+        type: Boolean,
+        default: false
+    },
+    lastSeen: {
         type: Date,
         default: Date.now
     }
-}, {collection: 'User', versionKey: false});
+
+}, {timestamp: true});
 
 module.exports = mongoose.model('user', UserSchema);

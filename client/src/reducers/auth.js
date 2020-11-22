@@ -44,7 +44,7 @@ export default function (state = initialState, action) {
     case ACCOUNT_DELETED:
       return {
         ...state,
-        token: null,
+        accessToken: null,
         isAuthenticated: false,
         loading: false,
         user: null
@@ -53,7 +53,7 @@ export default function (state = initialState, action) {
     case LOGOUT:
       return {
         ...state,
-        token: null,
+        accessToken: null,
         isAuthenticated: false,
         loading: false,
         user: null

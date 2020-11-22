@@ -18,10 +18,9 @@ const AddFavorite = ({ addFavorite, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Add Your Favorite Games</h1>
+      <h1 className="large text-primary">Добавьте свои любимые игры</h1>
       <p className="lead">
-        <i className="fas fa-code-branch" /> Consider adding games you would
-        like to play any day.
+        <i className="fas fa-code-branch" /> Подумайте о добавлении игр
       </p>
       <small>* = required field</small>
       <form

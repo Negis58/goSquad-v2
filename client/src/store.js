@@ -26,8 +26,8 @@ store.subscribe(() => {
     let previousState = currentState;
     currentState = store.getState();
     // if the token changes set the value in localStorage and axios headers
-    if (previousState.auth.token !== currentState.auth.token) {
-        const token = currentState.auth.token;
+    if (previousState.auth.accessToken !== currentState.auth.accessToken) {
+        const token = currentState.auth.accessToken;
         setAuthToken(token);
     }
 });

@@ -13,7 +13,7 @@ import {
 // Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
-    const res = await api.get("/profile/me");
+    const res = await api.get("/users/me");
 
     dispatch({
       type: GET_PROFILE,
@@ -32,7 +32,7 @@ export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
 
   try {
-    const res = await api.get("/profile");
+    const res = await api.get("/users");
 
     dispatch({
       type: GET_PROFILES,
@@ -49,7 +49,7 @@ export const getProfiles = () => async (dispatch) => {
 // Get profile by ID
 export const getProfileById = (userId) => async (dispatch) => {
   try {
-    const res = await api.get(`/profile/user/${userId}`);
+    const res = await api.get(`/users/${userId}`);
 
     dispatch({
       type: GET_PROFILE,
@@ -68,7 +68,7 @@ export const createProfile = (formData, history, edit = false) => async (
   dispatch
 ) => {
   try {
-    const res = await api.post("/profile", formData);
+    const res = await api.post("/users", formData);
 
     dispatch({
       type: GET_PROFILE,
@@ -97,7 +97,7 @@ export const createProfile = (formData, history, edit = false) => async (
 // Add recently played game
 export const addRecent = (formData, history) => async (dispatch) => {
   try {
-    const res = await api.put("/profile/recent", formData);
+    const res = await api.put("/users/recent", formData);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -124,7 +124,7 @@ export const addRecent = (formData, history) => async (dispatch) => {
 // Add favorite games
 export const addFavorite = (formData, history) => async (dispatch) => {
   try {
-    const res = await api.put("/profile/favorite", formData);
+    const res = await api.put("/users/favorite", formData);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -151,7 +151,7 @@ export const addFavorite = (formData, history) => async (dispatch) => {
 // Delete recently played game
 export const deleteRecent = (id) => async (dispatch) => {
   try {
-    const res = await api.delete(`/profile/recent/${id}`);
+    const res = await api.delete(`/users/recent/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -170,7 +170,7 @@ export const deleteRecent = (id) => async (dispatch) => {
 // Delete Favorite Games
 export const deleteFavorite = (id) => async (dispatch) => {
   try {
-    const res = await api.delete(`/profile/favorite/${id}`);
+    const res = await api.delete(`/users/favorite/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -190,7 +190,7 @@ export const deleteFavorite = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     try {
-      await api.delete("/profile");
+      await api.delete("/users");
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });

@@ -24,4 +24,14 @@ router.put('/users/favorite/', auth.authValidate, [
 
 router.delete('/users/favorite/:favId', auth.authValidate, userController.deleteFavoriteGamesForUser);
 
+router.put('/users/recent', auth.authValidate, [
+    check('title', 'title is Required').not().isEmpty(),
+    check('platform', 'platform is Required').not().isEmpty(),
+    check('hours','From date is required and needs to be from the past').not().isEmpty()
+], userController.addRecentlyPlayedGames);
+
+router.delete('/users/recent/:id', auth.authValidate, userController.deleteRecentlyPlayedGames);
+
+
+
 module.exports = router;

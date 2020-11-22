@@ -18,10 +18,9 @@ const AddRecent = ({ addRecent, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Add Recently Played Games</h1>
+      <h1 className="large text-primary">Добавить недавно сыгранные игры</h1>
       <p className="lead">
-        <i className="fas fa-code-branch" /> New or old games you have been
-        playing.
+        <i className="fas fa-code-branch" /> Новые или старые игры в которые вы играли.
       </p>
       <small>* = required field</small>
       <form

@@ -13,7 +13,7 @@ import {
 // Load User
 export const loadUser = () => async dispatch => {
   try {
-    const res = await api.get('/auth');
+    const res = await api.get('/login');
 
     dispatch({
       type: USER_LOADED,
@@ -29,11 +29,11 @@ export const loadUser = () => async dispatch => {
 // Register User
 export const register = formData => async dispatch => {
   try {
-    const res = await api.post('/users', formData);
-
+    const res = await api.post('/register', formData);
+    console.log(res.data);
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data
+      payload: res.data.accessToken
     });
     dispatch(loadUser());
   } catch (err) {
@@ -50,15 +50,15 @@ export const register = formData => async dispatch => {
 };
 
 // Login User
-export const login = (email, password) => async dispatch => {
-  const body = { email, password };
+export const login = (username, password) => async dispatch => {
+  const body = { username, password };
 
   try {
-    const res = await api.post('/auth', body);
-
+    const res = await api.post('/login', body);
+    //console.log(res.data.tokens.accessToken);
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: res.data.tokens
     });
 
     dispatch(loadUser());
