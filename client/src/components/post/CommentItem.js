@@ -21,7 +21,7 @@ const CommentItem = ({
     <div>
       <p className="my-1">{text}</p>
       <p className="post-date">
-        Отравлено  <Moment format="YYYY/MM/DD">{date}</Moment>
+        Отравлено  <Moment format="DD/MM/YYYY HH:mm:ss">{date}</Moment>
       </p>
       {!auth.loading && commentedBy === auth.user._id && (
         <button

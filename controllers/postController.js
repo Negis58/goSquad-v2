@@ -36,6 +36,7 @@ exports.createPost = async function (req, res) {
 exports.getPosts = async function (req, res) {
     try {
         const posts = await Post.find().sort({date: -1});
+        console.log(posts);
         res.status(200).json(posts);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
@@ -72,7 +73,6 @@ exports.deletePost = async function (req, res) {
         }
         await post.remove();
         const posts = await Post.find();
-        console.log(posts);
         res.json(posts);
         //res.json({message: "Пост удален"});
     } catch (e) {
