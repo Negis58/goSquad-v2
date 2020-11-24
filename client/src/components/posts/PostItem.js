@@ -7,13 +7,13 @@ import { addLike, removeLike, deletePost } from "../../actions/post";
 
 const PostItem = ({
   addLike,
-  removeLike,
+  removeLike, deletePost,
   auth,
-  post: { _id, text, name, avatar, user, likes, comments, date },
+  post: { _id, text, name, avatar, postedBy, likes, comments, date },
 }) => (
   <div className="post bg-white p-1 my-1">
     <div>
-      <Link to={`/profile/${user}`}>
+      <Link to={`/profile/${postedBy}`}>
         <img className="round-img" src={avatar} alt="" />
         <h4>{name}</h4>
       </Link>
@@ -45,13 +45,12 @@ const PostItem = ({
             <span className="comment-count">{comments.length}</span>
           )}
         </Link>
-        {!auth.loading && user === auth.user._id && (
+        {!auth.loading && postedBy === auth.user._id && (
           <button
-            onClick={() => deletePost(_id)}
+            onClick={()=> deletePost(_id)}
             type="button"
             className="btn btn-danger"
-          >
-            <i className="fas fa-times" />
+          >Удалить
           </button>
         )}
       </Fragment>

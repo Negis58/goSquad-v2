@@ -10,6 +10,9 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    avatar: {
+      type: String
+    },
     title: {
         type: String,
         default: "Post"
@@ -29,7 +32,10 @@ const postSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'user'
         },
-        data: {
+        avatar: {
+            type: String
+        },
+        date: {
             type: Date,
             default: Date.now
         }

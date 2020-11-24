@@ -16,7 +16,7 @@ router.put('/post/unlike/:id', auth.authValidate, postController.unLikePost);
 router.post('/post/comment/:id', auth.authValidate, [
     check('text', 'Текст обязателен').not().isEmpty()
 ], postController.commentPost);
-router.delete('/post/comment/:id', auth.authValidate, postController.deleteCommentPost);
+router.delete('/post/comment/:id/:comment_id', auth.authValidate, postController.deleteCommentPost);
 
 
 module.exports = router;

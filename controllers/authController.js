@@ -81,7 +81,6 @@ exports.login = async function (req, res) {
 
 exports.loginGetProfile = async function (req,res) {
   try {
-      console.log(req.user.userId);
       const user = await User.findById(req.user.userId).select('-password');
       res.json(user);
   }  catch (e) {

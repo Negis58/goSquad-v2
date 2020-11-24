@@ -15,7 +15,7 @@ import {
 export const getPosts = () => async (dispatch) => {
   try {
     const res = await api.get("/post");
-
+    console.log(res);
     dispatch({
       type: GET_POSTS,
       payload: res.data,
@@ -31,8 +31,9 @@ export const getPosts = () => async (dispatch) => {
 // Add like
 export const addLike = (id) => async (dispatch) => {
   try {
+    console.log(id);
     const res = await api.put(`/post/like/${id}`);
-
+    console.log(res);
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data },
@@ -65,6 +66,7 @@ export const removeLike = (id) => async (dispatch) => {
 // Delete post
 export const deletePost = (id) => async (dispatch) => {
   try {
+    console.log(id);
     await api.delete(`/post/${id}`);
 
     dispatch({

@@ -20,7 +20,8 @@ exports.createPost = async function (req, res) {
         const newPost = new Post({
             text: req.body.text,
             postedBy: user._id,
-            name: user.username
+            name: user.username,
+            avatar: user.avatar
         });
         const post = await newPost.save();
         res.status(200).json(post);
@@ -61,6 +62,7 @@ exports.getPostById = async function (req, res) {
 
 exports.deletePost = async function (req, res) {
     try {
+        console.log("fsdfsdfsd")
         const post = await Post.findById(req.params.id);
         if (!post) {
             res.status(404).json({message: 'Пост не найден'});
@@ -69,7 +71,10 @@ exports.deletePost = async function (req, res) {
             res.status(401).json({message: 'Пользователь не авторизован'});
         }
         await post.remove();
-        res.json({message: 'Пост удален'});
+        const posts = await Post.find();
+        console.log(posts);
+        res.json(posts);
+        //res.json({message: "Пост удален"});
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }
@@ -125,13 +130,13 @@ exports.commentPost = async function (req, res) {
         const newComment = {
             text: req.body.text,
             username: user.username,
-            commentedBy: req.user.userId
+            commentedBy: req.user.userId,
+            avatar: user.avatar
         };
 
         post.comments.unshift(newComment);
 
         await post.save();
-        console.log(post.comments)
         res.json(post.comments);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
@@ -141,14 +146,16 @@ exports.commentPost = async function (req, res) {
 exports.deleteCommentPost = async function (req, res) {
     try {
         const post = await Post.findById(req.params.id);
-        const comment = post.comments.find((comment) => comment.id === req.params.id);
+        console.log(post);
+        const comment = post.comments.find((comment) => comment.id === req.params.comment_id);
+        console.log(comment);
         if (!comment) {
             res.status(404).json({message: 'Коментарий не найден'});
         }
-        if (comment.commentedBy.toString() !== req.params.userId) {
+        if (comment.commentedBy.toString() !== req.user.userId) {
             return res.status(401).json({message: 'Пользователь не авторизован'});
         }
-        post.comments = post.comments.filter(({id}) => id !== req.params.id);
+        post.comments = post.comments.filter(({id}) => id !== req.params.comment_id);
         await post.save();
         return res.json(post.comments);
     } catch (e) {
