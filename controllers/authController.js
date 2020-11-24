@@ -34,8 +34,9 @@ exports.register = async function (req, res) {
         });
         const result = await user.save();
 
-        const token = await authService.updateTokens(result._id);
-        res.status(200).json(token);
+        const tokens = await authService.updateTokens(result._id);
+        const resultTokens = {tokens};
+        res.status(200).json(resultTokens);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }

@@ -33,7 +33,7 @@ export const register = formData => async dispatch => {
     console.log(res.data);
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data.accessToken
+      payload: res.data.tokens
     });
     dispatch(loadUser());
   } catch (err) {
