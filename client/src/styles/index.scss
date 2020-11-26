@@ -1,9 +1,19 @@
 @import "~antd/dist/antd.css";
 
-body, html, #root,  {
-  /*
+body, html, #root, {
+
   background: #171717;
-  */
+
   height: 100%;
   /*background: #ffffff;*/
+}
+
+.btn-gosquad {
+  border-color: #81DC18;
+  border-radius: 5px;
+}
+
+.btn-gosquad:hover {
+  color: #171717;
+  background: #81DC18;
 }

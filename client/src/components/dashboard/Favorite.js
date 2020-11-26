@@ -2,17 +2,18 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { deleteFavorite } from "../../actions/profile";
+import './Dashboard.scss';
 
 const Favorite = ({ favorite, deleteFavorite }) => {
   const favorites = favorite.map((fav) => (
     <tr key={fav._id}>
-      <td>{fav.title}</td>
-      <td className="hide-sm">{fav.platform}</td>
-      <td>{fav.hours} </td>
+      <td className="title-table">{fav.title}</td>
+      <td className="platform-table">{fav.platform}</td>
+      <td className="hours-table">{fav.hours} </td>
       <td>
         <button
           onClick={() => deleteFavorite(fav._id)}
-          className="btn btn-danger"
+          className="btn btn-danger btn-delete"
         >
           Удалить
         </button>
@@ -22,13 +23,13 @@ const Favorite = ({ favorite, deleteFavorite }) => {
 
   return (
     <Fragment>
-      <h2 className="my-2">Любимые игры</h2>
+      <h2 className="text-color my-2">Любимые игры</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Title</th>
+            <th>Название игры</th>
             <th className="hide-sm">Платформы</th>
-            <th className="hide-sm">Часы проведенные в игре</th>
+            <th className="hide-sm">Часы в игре</th>
             <th />
           </tr>
         </thead>

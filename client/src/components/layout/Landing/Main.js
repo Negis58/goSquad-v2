@@ -18,10 +18,10 @@ const Main = ({ isAuthenticated }) => {
           <p>Присоединяйтесь к ведущей платформе для встреч <br/> с товарищами по команде для
             игр</p>
           <Link className="main__top__login" to="/login">
-            <Button>Войти</Button>
+            <button className="btn ">Войти</button>
           </Link>
           <Link className="main__top__register" to="/register">
-            <Button>Регистрация</Button>
+            <button className="btn">Регистрация</button>
           </Link>
         </div>
       </div>

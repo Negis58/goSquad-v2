@@ -3,6 +3,10 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {createProfile, getCurrentProfile} from "../../../actions/profile";
+import Discord from '../../../img/discord.jpg'
+import Youtube from '../../../img/youtube.jpg'
+import Steam from '../../../img/steam.jpg'
+import './ProfileForm.scss';
 
 const initialState = {
     firstname: "",
@@ -10,16 +14,17 @@ const initialState = {
     location: "",
     status: "",
     platform: "",
-    bio: "",
+    about: "",
     discord: "",
     youtube: "",
-    steam: ""
+    steam: "",
 };
 
 const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProfile, history,}) => {
     const [formData, setFormData] = useState(initialState);
 
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
 
     useEffect(() => {
         if (!profile) getCurrentProfile();
@@ -43,10 +48,10 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
         location,
         status,
         platform,
-        bio,
+        about,
         discord,
         youtube,
-        steam
+        steam,
     } = formData;
 
     const onChange = (e) =>
@@ -59,31 +64,34 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
 
     return (
         <Fragment>
-            <div className="profile">
+            <div className="profile-form">
                 <div className="profile__top">
-                    <h1 className="large text-primary">Редактирование профиля</h1>
+                    <h1 className="large  text-color">Редактирование профиля</h1>
                     <p className="lead">
                         <i className="fas fa-user"/> Добавьте некоторые изменения в свой профиль
                     </p>
-                    <small>* = Обязательные поля</small>
+                    <small className="text-color">* = Обязательные поля</small>
                     <form className="profile__form" onSubmit={onSubmit}>
                         <div className="form-group">
                             <select name="status" value={status} onChange={onChange}>
                                 <option>* Выберете игровой статус</option>
                                 <option value="Classic Gamer">Обычный игрок</option>
-                                <option value="Casual Gamer">Задрот лола</option>
-                                <option value="Hardcore Gamer">Нормальный человек</option>
-                                <option value="Hardcore Gamer">Игрок в доту</option>
-                                <option value="Hardcore Gamer">Игрок в хс</option>
+                                <option value="Задрот лол">Задрот лола</option>
+                                <option value="Нормальный человек">Нормальный человек</option>
+                                <option value="Игрок в доту">Игрок в доту</option>
+                                <option value="Игрок в хс">Игрок в хс</option>
                                 <option value="Pro Gamer (Verified)" disabled>
                                     Шин (Нужно подтвердить личность)
                                 </option>
                             </select>
-                            <small className="form-text">
+                            <small className="form-text form-color">
                                 Если вы Шин, то напишите нам на почту gosquadtest@gmail.com
                             </small>
                         </div>
                         <div className="form-group">
+                            <small className="form-text form-color">
+                                Введите ваше имя
+                            </small>
                             <input
                                 type="text"
                                 placeholder="Имя"
@@ -91,10 +99,10 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                                 value={firstname}
                                 onChange={onChange}
                             />
-                            <small className="form-text">
-                                Could be a link to a discord server or gamer profile.
-                            </small>
                             <div className="form-group">
+                                <small className="form-text form-color">
+                                    Введите вашу фамилию.
+                                </small>
                                 <input
                                     type="text"
                                     placeholder="Фамилия"
@@ -103,11 +111,11 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                                     onChange={onChange}
                                 />
                             </div>
-                            <small className="form-text">
-                                Could be a link to a discord server or gamer profile.
-                            </small>
                         </div>
                         <div className="form-group">
+                            <small className="form-text form-color">
+                                Введите ваше место расположения
+                            </small>
                             <input
                                 type="text"
                                 placeholder="Место расположение"
@@ -115,11 +123,11 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                                 value={location}
                                 onChange={onChange}
                             />
-                            <small className="form-text">
-                                City & state suggested (eg. Los Angeles, CA)
-                            </small>
                         </div>
                         <div className="form-group">
+                            <small className="form-text form-color">
+                                Пожалуйста, введите игровые платформы, которые вы используете (PS4, Xbox One, PC, Mobile)
+                            </small>
                             <input
                                 type="text"
                                 placeholder="* Игровые платформы, которые вы используете"
@@ -127,18 +135,19 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                                 value={platform}
                                 onChange={onChange}
                             />
-                            <small className="form-text">
-                                Please use comma separated values (eg. PS4, Xbox One, PC, Mobile)
-                            </small>
+
                         </div>
                         <div className="form-group">
+                            <small className="form-text form-color">Напишите что-нибудь о себе</small>
                             <textarea
+                                cols="40"
+                                rows="5"
                                 placeholder="Расскажите пару слов о себе"
-                                name="bio"
-                                value={bio}
+                                name="about"
+                                value={about}
                                 onChange={onChange}
                             />
-                            <small className="form-text">Tell us a little about yourself</small>
+
                         </div>
                         <div className="my-2">
                             <button
@@ -146,15 +155,15 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                                 type="button"
                                 className="btn btn-light"
                             >
-                                Add Social Network Links
+                                Добавить социальные сети
                             </button>
-                            <span>Optional</span>
+                            <span className="text-color">Дополнительно</span>
                         </div>
 
                         {displaySocialInputs && (
                             <Fragment>
                                 <div className="form-group social-input">
-                                    <i className="fab fa-twitter fa-2x"/>
+                                    <img className="discord" src={Discord}/>
                                     <input
                                         type="text"
                                         placeholder="Профиль discord"
@@ -164,7 +173,7 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                                     />
                                 </div>
                                 <div className="form-group social-input">
-                                    <i className="fab fa-facebook fa-2x"/>
+                                    <img className="youtube" src={Youtube}/>
                                     <input
                                         type="text"
                                         placeholder="Профиль youtube"
@@ -174,7 +183,7 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                                     />
                                 </div>
                                 <div className="form-group social-input">
-                                    <i className="fab fa-facebook fa-2x"/>
+                                    <img className="steam" src={Steam}/>
                                     <input
                                         type="text"
                                         placeholder="Профиль steam"
@@ -185,9 +194,9 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                                 </div>
                             </Fragment>
                         )}
-                        <input type="submit" className="btn btn-primary my-1"/>
-                        <Link className="btn btn-light my-1" to="/dashboard">
-                            Go Back
+                        <input type="submit" className="btn btn-gosquad my-1"/>
+                        <Link className="btn btn-gosquad my-1" to="/dashboard">
+                            Вернуться назад
                         </Link>
                     </form>
                 </div>

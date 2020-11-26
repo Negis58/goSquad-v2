@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
 import { getPosts } from "../../actions/post";
-
+import './Posts.scss';
 
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
@@ -13,7 +13,7 @@ const Posts = ({ getPosts, post: { posts } }) => {
 
   return (
     <Fragment>
-         <h1 className="large text-primary">Посты</h1>
+         <h1 className="large text-color">Посты</h1>
          <p className="lead">
              <i className="fas fa-user" /> Добро пожаловать в лучшее игровое сообщество
          </p>

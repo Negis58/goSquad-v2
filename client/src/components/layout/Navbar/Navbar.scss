@@ -1,3 +1,10 @@
 .navbar {
+  background: #171717;
   font-size: 30px;
+  &__text {
+  color: #81DC18;
+  }
+  &__logo {
+    color: #81DC18;
+  }
 }

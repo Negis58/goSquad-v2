@@ -6,6 +6,7 @@ import DashboardActions from "./DashboardActions";
 import Recent from "./Recent";
 import Favorite from "./Favorite";
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
+import './Dashboard.scss';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -19,9 +20,9 @@ const Dashboard = ({
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Профиль</h1>
+      <h1 className="large text">Профиль</h1>
       <p className="lead">
-        <i className="fas fa-user" /> Добро пожаловать {user && user.name}
+        <i className="fas fa-user" /> {/*Добро пожаловать {user && user.name}*/}
       </p>
       {profile !== null ? (
         <Fragment>

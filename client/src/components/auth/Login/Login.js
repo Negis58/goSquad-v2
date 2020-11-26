@@ -37,7 +37,7 @@ const Login = ({login, isAuthenticated}) => {
                     <div className="login__form__group">
                         <input
                             type="text"
-                            placeholder="Email Address"
+                            placeholder="Username"
                             name="username"
                             value={username}
                             onChange={onChange}

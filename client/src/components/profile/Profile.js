@@ -8,6 +8,7 @@ import ProfileAbout from "./ProfileAbout";
 import ProfileRecent from "./ProfileRecent";
 import ProfileFavorite from "./ProfileFavorite";
 import { getProfileById } from "../../actions/profile";
+import './Profile.scss';
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
@@ -20,21 +21,20 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <Link to="/profiles" className="btn btn-light">
-            Назад к профилю
-          </Link>
+          <Link to="/profiles" className="btn btn-gosquad mt-3">Назад к профилю</Link>
+
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="btn btn-dark">
-                Edit Profile
+              <Link to="/edit-profile" className="btn btn-gosquad mt-3">
+                Редактировать профиль
               </Link>
             )}
-          <div className="profile-grid my-1">
+          <div className="profile-grid my-1 mt-2">
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
-            <div className="profile-exp bg-white p-2">
-              <h2 className="text-primary">Недавно сыгранные игры</h2>
+            <div className="profile-exp p-2">
+              <h2 className="text-color">Недавно сыгранные игры</h2>
               {profile.recent.length > 0 ? (
                 <Fragment>
                   {profile.recent.map((recent) => (
@@ -46,8 +46,8 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div>
 
-            <div className="profile-edu bg-white p-2">
-              <h2 className="text-primary">Любимые игры</h2>
+            <div className="profile-edu  p-2">
+              <h2 className="text-color">Любимые игры</h2>
               {profile.favorite.length > 0 ? (
                 <Fragment>
                   {profile.favorite.map((favorite) => (

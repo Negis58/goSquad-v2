@@ -2,13 +2,14 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { deleteRecent } from "../../actions/profile";
+import './Dashboard.scss';
 
 const Recent = ({ recent, deleteRecent }) => {
   const recents = recent.map((rec) => (
     <tr key={rec._id}>
-      <td>{rec.title}</td>
-      <td className="hide-sm">{rec.platform}</td>
-      <td>{rec.hours} </td>
+      <td className="title-table">{rec.title}</td>
+      <td className="platform-table">{rec.platform}</td>
+      <td className="hours-table">{rec.hours} </td>
       <td>
         <button
           onClick={() => deleteRecent(rec._id)}
@@ -22,13 +23,13 @@ const Recent = ({ recent, deleteRecent }) => {
 
   return (
     <Fragment>
-      <h2 className="my-2">Недавно сыгранные игры</h2>
+      <h2 className="text-color my-2">Недавно сыгранные игры</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Title</th>
-            <th className="hide-sm">Platform</th>
-            <th className="hide-sm">Hours</th>
+            <th>Название игры</th>
+            <th className="hide-sm">Игровая платформа</th>
+            <th className="hide-sm">Часы в игре</th>
             <th />
           </tr>
         </thead>

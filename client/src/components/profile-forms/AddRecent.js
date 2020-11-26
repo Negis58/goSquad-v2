@@ -59,9 +59,9 @@ const AddRecent = ({ addRecent, history }) => {
             onChange={onChange}
           />
         </div>
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
-          Go Back
+        <input type="submit" className="btn btn-gosquad my-1" />
+        <Link className="btn btn-gosquad my-1" to="/dashboard">
+          Вернуться назад
         </Link>
       </form>
     </Fragment>

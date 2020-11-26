@@ -14,7 +14,6 @@ import {
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const res = await api.get("/users/me");
-
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -33,6 +32,7 @@ export const getProfiles = () => async (dispatch) => {
 
   try {
     const res = await api.get("/users");
+    console.log(res, '123')
     dispatch({
       type: GET_PROFILES,
       payload: res.data,
@@ -49,7 +49,7 @@ export const getProfiles = () => async (dispatch) => {
 export const getProfileById = (userId) => async (dispatch) => {
   try {
     const res = await api.get(`/users/${userId}`);
-
+    console.log(res);
     dispatch({
       type: GET_PROFILE,
       payload: res.data,

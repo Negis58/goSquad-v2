@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/post";
+import './Posts.scss';
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState("");
 
   return (
     <div className="post-form">
-      <div className="bg-primary p">
-        <h3>Расскажите что-нибудь...</h3>
+      <div className="p-2">
+        <h3 className="text-color">Расскажите что-нибудь...</h3>
       </div>
       <form
         className="form my-1"
@@ -28,7 +29,7 @@ const PostForm = ({ addPost }) => {
           onChange={(e) => setText(e.target.value)}
           required
         />
-        <input type="submit" className="btn btn-dark my-1" value="Отправить" />
+        <input type="submit" className="btn input-color my-1" value="Отправить" />
       </form>
     </div>
   );

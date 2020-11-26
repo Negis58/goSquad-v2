@@ -31,10 +31,10 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
 
 
     return (
-        <nav className="navbar ">
-            <h1>
-                <Link to="/">
-                    <i className="fas fa-gamepad"/> GOSQUAD
+        <nav className="navbar">
+            <h1 className="navbar__text">
+                <Link className="navbar__logo" to="/">
+                    GOSQUAD
                 </Link>
             </h1>
             {authLinks}

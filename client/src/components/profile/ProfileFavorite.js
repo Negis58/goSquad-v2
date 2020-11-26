@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 
 const ProfileFavorite = ({ favorite: { title, platform, hours } }) => (
   <div>
-    <h3 className="text-dark">{title}</h3>
-    <p>
-      <strong>Платформы: </strong> {platform}
+    <h3 className="text-white">{title}</h3>
+    <p className="text-color">
+      <strong className="text-white">Платформы: </strong> {platform}
     </p>
-    <p>
-      <strong>Проведенные часы в игре: </strong> {hours}
+    <p className="text-color">
+      <strong className="text-white">Проведенные часы в игре: </strong> {hours}
     </p>
+      <h3 className="text-white">Социальные сети</h3>
+      <p>
+          <strong className="text-white">Discord</strong>
+      </p>
   </div>
 );
 

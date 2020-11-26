@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import {Route, Switch} from "react-router-dom";
 import Register from "../auth/Register/Register";
 import Login from "../auth/Login/Login";
-import Alert from "../layout/Alert";
+import Alert from "../layout/Alert/Alert";
 import Dashboard from "../dashboard/Dashboard";
 import ProfileForm from "../profile-forms/ProfileForm/ProfileForm";
 import AddRecent from "../profile-forms/AddRecent";

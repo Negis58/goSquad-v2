@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 
 const ProfileRecent = ({ recent: { title, platform, hours } }) => (
   <div>
-    <h3 className="text-dark">{title}</h3>
-    <p>
-      <strong>Платформы: </strong> {platform}
+    <h3 className="text-white">{title}</h3>
+    <p className="text-color">
+      <strong className="text-color-black">Платформы: </strong> {platform}
     </p>
-    <p>
-      <strong>Часы проведенные в игре: </strong> {hours}
+    <p className="text-color">
+      <strong className="text-color-black">Часы проведенные в игре: </strong> {hours}
     </p>
   </div>
 );

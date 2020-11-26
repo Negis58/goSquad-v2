@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import ProfileItem from "./ProfileItem";
 import { getProfiles } from "../../actions/profile";
+import './Profiles.scss';
+
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
@@ -16,7 +18,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className="large text-primary">Игроки</h1>
+          <h1 className="large text">Игроки</h1>
           <p className="lead">
             <i className="fas fa-link" /> Ищите и общайтесь с игроками.
           </p>
