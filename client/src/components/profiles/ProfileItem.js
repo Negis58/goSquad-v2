@@ -20,7 +20,7 @@ const ProfileItem = ({
                      }) => {
     return (
         <div className="profile">
-            <img src={avatar} alt="" className="round-img"/>
+            <img src={avatar} alt="" className="avatar"/>
             <div>
                 <h2>Никнейм: {username}</h2>
                 <h2>Имя: {firstname}</h2>

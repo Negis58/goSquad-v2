@@ -18,11 +18,11 @@ const AddFavorite = ({ addFavorite, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Добавьте свои любимые игры</h1>
+      <h1 className="large text-color m-2">Добавьте свои любимые игры</h1>
       <p className="lead">
         <i className="fas fa-code-branch" /> Подумайте о добавлении игр
       </p>
-      <small>* = required field</small>
+      <div className="text-color">* = обязательные поля</div>
       <form
         className="form"
         onSubmit={(e) => {
@@ -33,7 +33,7 @@ const AddFavorite = ({ addFavorite, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="*Title"
+            placeholder="*Название"
             name="title"
             value={title}
             onChange={onChange}
@@ -43,7 +43,7 @@ const AddFavorite = ({ addFavorite, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="*Platform"
+            placeholder="*Платформа"
             name="platform"
             value={platform}
             onChange={onChange}
@@ -53,7 +53,7 @@ const AddFavorite = ({ addFavorite, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="*Hours played"
+            placeholder="*Часов в игре"
             name="hours"
             value={hours}
             onChange={onChange}

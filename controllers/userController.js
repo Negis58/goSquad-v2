@@ -36,6 +36,7 @@ exports.getUsers = async function (req, res) {
 
 exports.getUserById = async function (req, res) {
     try {
+        console.log(req.params);
         let userProfile = await UserProfile.findOne({user: req.params.id})
             .populate('user', ['username', 'avatar']);
         if (!userProfile) {
@@ -73,6 +74,8 @@ exports.createOrUpdateUserProfile = async function (req, res) {
             youtube,
             steam
         } = req.body;
+        const userAvatar = await User.findById(req.user.userId);
+
         const profileFields = {
             user: req.user.userId,
             firstname,
@@ -91,7 +94,6 @@ exports.createOrUpdateUserProfile = async function (req, res) {
         };
 
         profileFields.social = socialFields;
-        console.log(profileFields);
         const profile = await UserProfile.findOneAndUpdate(
             {user: req.user.userId},
             {$set: profileFields},
@@ -179,8 +181,9 @@ exports.addFavoriteGamesForUser = async function (req, res) {
                 message: 'Некорректные данные'
             });
         }
-        const {title, platform} = req.body;
-        const newFavorite = {title, platform};
+        console.log(req.body);
+        const {title, platform, hours} = req.body;
+        const newFavorite = {title, platform, hours};
 
         const userProfile = await UserProfile.findOne({user: req.user.userId});
 

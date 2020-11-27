@@ -17,7 +17,9 @@
   "forgotPasswordURL": "http://localhost:5000",
   "mailerEmail": "gosquadtest@gmail.com",
   "mailerPassword": "GoSquadTest123",
-  "cloud_name": "dxckouxlq",
-  "api_key": "439912644566591",
-  "api_secret": "VqdyjcpdUvB2azlYMcODJpZU8d8"
+  "cloudinary": {
+    "cloud_name": "dxckouxlq",
+    "api_key": "439912644566591",
+    "api_secret": "VqdyjcpdUvB2azlYMcODJpZU8d8"
+  }
 }

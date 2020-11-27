@@ -24,12 +24,13 @@ const PostForm = ({ addPost }) => {
           name="text"
           cols="30"
           rows="5"
+          className="textarea-gosquad"
           placeholder="Создать пост"
           value={text}
           onChange={(e) => setText(e.target.value)}
           required
         />
-        <input type="submit" className="btn input-color my-1" value="Отправить" />
+        <input type="submit" className="btn btn-gosquad my-2" value="Отправить" />
       </form>
     </div>
   );

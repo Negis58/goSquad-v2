@@ -36,7 +36,6 @@ exports.createPost = async function (req, res) {
 exports.getPosts = async function (req, res) {
     try {
         const posts = await Post.find().sort({date: -1});
-        console.log(posts);
         res.status(200).json(posts);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
@@ -63,7 +62,6 @@ exports.getPostById = async function (req, res) {
 
 exports.deletePost = async function (req, res) {
     try {
-        console.log("fsdfsdfsd")
         const post = await Post.findById(req.params.id);
         if (!post) {
             res.status(404).json({message: 'Пост не найден'});

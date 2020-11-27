@@ -51,6 +51,9 @@ const UserProfileSchema = new mongoose.Schema({
             platform: {
                 type: String,
                 required: true
+            },
+            hours: {
+                type: String
             }
         }
     ],

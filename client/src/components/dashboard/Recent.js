@@ -23,14 +23,14 @@ const Recent = ({ recent, deleteRecent }) => {
 
   return (
     <Fragment>
-      <h2 className="text-color my-2">Недавно сыгранные игры</h2>
+      <h2 className="text-color my-3">Недавно сыгранные игры</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Название игры</th>
-            <th className="hide-sm">Игровая платформа</th>
-            <th className="hide-sm">Часы в игре</th>
-            <th />
+            <th className="hide-sm bg-gosquad text-white">Название игры</th>
+            <th className="hide-sm bg-gosquad text-white">Игровая платформа</th>
+            <th className="hide-sm bg-gosquad text-white">Часы в игре</th>
+            <th className="bg-gosquad"/>
           </tr>
         </thead>
         <tbody>{recents}</tbody>

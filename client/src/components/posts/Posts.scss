@@ -19,16 +19,49 @@
 }
 
 .text-color-post {
-  color: #000000;
+  color: #ffffff;
 }
 
 .post {
   border-radius: 3px;
 }
-.text-comment {
-  color: #000000;
-}
+
 
 .posts {
   margin-top: 15px;
+}
+
+.textarea-gosquad {
+  color: #ffffff;
+  background: #171717;
+  border-radius: 5px;
+  border: #81DC18 2px solid;
+}
+
+
+
+.bg-post {
+  border-radius: 5px;
+  margin-top: 15px;
+  border: #81DC18 2px solid;
+  background: #171717;
+}
+
+.posts {
+}
+
+.round-img {
+  margin-top: 0;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.div-image {
+}
+
+.comment-count {
+  color: #81DC18;
+  background: #171717;
+  border: #81DC18 1px solid;
 }

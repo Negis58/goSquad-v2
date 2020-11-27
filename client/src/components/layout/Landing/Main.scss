@@ -26,8 +26,6 @@
       margin-top: 50px;
 
       button {
-        align-items: center;
-        vertical-align: middle;
         text-transform: uppercase;
         font-weight: 500;
         font-size: 25px;
@@ -77,4 +75,10 @@
       }
     }
   }
+}
+
+.btn-login {
+  text-align: center;
+  vertical-align: center;
+  color: #171717;
 }

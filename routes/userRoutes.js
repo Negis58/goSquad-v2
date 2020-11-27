@@ -5,8 +5,8 @@ const userController = require('../controllers/userController');
 const {check} = require('express-validator');
 
 router.get('/users/me', auth.authValidate, userController.getMyProfile);
-router.get('/users',  userController.getUsers);
-router.get('/users/:id', auth.authValidate, userController.getUserById);
+router.get('/users', userController.getUsers);
+router.get('/users/:id', userController.getUserById);
 
 router.post('/users', auth.authValidate, [
     check('firstname','Имя обязательно').not().isEmpty(),

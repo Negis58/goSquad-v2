@@ -2,11 +2,12 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Spinner from "../layout/Spinner";
+import Spinner from "../layout/Spinner/Spinner";
 import PostItem from "../posts/PostItem";
-import CommentForm from "../post/CommentForm";
-import CommentItem from "../post/CommentItem";
+import CommentForm from "./CommentForm";
+import CommentItem from "./CommentItem";
 import { getPost } from "../../actions/post";
+import './Post.scss';
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
@@ -17,7 +18,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <Link to="/posts" className="btn">
+      <Link to="/posts" className="btn btn-gosquad my-3">
         Вернуться к постам
       </Link>
       <PostItem post={post} showActions={false} />

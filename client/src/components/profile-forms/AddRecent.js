@@ -18,11 +18,11 @@ const AddRecent = ({ addRecent, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Добавить недавно сыгранные игры</h1>
+      <h1 className="large text-color mt-2">Добавить недавно сыгранные игры</h1>
       <p className="lead">
         <i className="fas fa-code-branch" /> Новые или старые игры в которые вы играли.
       </p>
-      <small>* = required field</small>
+      <div className="text-color">* = Обязательные поля</div>
       <form
         className="form"
         onSubmit={(e) => {
@@ -33,7 +33,7 @@ const AddRecent = ({ addRecent, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="*Title"
+            placeholder="*Название"
             name="title"
             value={title}
             onChange={onChange}
@@ -43,7 +43,7 @@ const AddRecent = ({ addRecent, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="*Platform"
+            placeholder="*Платформа"
             name="platform"
             value={platform}
             onChange={onChange}
@@ -53,7 +53,7 @@ const AddRecent = ({ addRecent, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="*Hours Played"
+            placeholder="*Часов в игре"
             name="hours"
             value={hours}
             onChange={onChange}

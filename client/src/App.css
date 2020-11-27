@@ -271,7 +271,6 @@ img {
     width: 100%;
     padding: 0.4rem;
     font-size: 1.2rem;
-    border: 1px solid #ccc;
 }
 
 .form input[type="submit"],
@@ -396,7 +395,7 @@ button {
     "about about"
     "exp edu"
     "github github";
-    grid-gap: 1rem;
+    grid-gap: 0.3rem;
 }
 
 .profile-top {
@@ -409,7 +408,8 @@ button {
 }
 
 .profile-top img {
-    width: 250px;
+    width: 240px;
+    height: 240px;
 }
 
 .profile-top h1 {
@@ -510,12 +510,9 @@ button {
 }
 
 .post img {
-    width: 100px;
 }
 
 .post .comment-count {
-    background: var(--light-color);
-    color: var(--primary-color);
     padding: 0.1rem 0.2rem;
     border-radius: 5px;
     font-size: 0.8rem;

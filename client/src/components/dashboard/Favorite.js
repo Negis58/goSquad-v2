@@ -23,14 +23,14 @@ const Favorite = ({ favorite, deleteFavorite }) => {
 
   return (
     <Fragment>
-      <h2 className="text-color my-2">Любимые игры</h2>
+      <h2 className="text-color my-3">Любимые игры</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Название игры</th>
-            <th className="hide-sm">Платформы</th>
-            <th className="hide-sm">Часы в игре</th>
-            <th />
+            <th className="bg-gosquad text-white">Название игры</th>
+            <th className="bg-gosquad text-white">Игровая платформа</th>
+            <th className="bg-gosquad text-white">Часы в игре</th>
+            <th className="bg-gosquad text-white" />
           </tr>
         </thead>
         <tbody>{favorites}</tbody>

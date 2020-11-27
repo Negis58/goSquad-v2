@@ -18,7 +18,7 @@ const Main = ({ isAuthenticated }) => {
           <p>Присоединяйтесь к ведущей платформе для встреч <br/> с товарищами по команде для
             игр</p>
           <Link className="main__top__login" to="/login">
-            <button className="btn ">Войти</button>
+            <button className="btn btn-login ">Войти</button>
           </Link>
           <Link className="main__top__register" to="/register">
             <button className="btn">Регистрация</button>
