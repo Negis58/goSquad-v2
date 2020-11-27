@@ -176,7 +176,7 @@ export const deleteFavorite = (id) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert("Favorite Game Removed", "success"));
+    dispatch(setAlert("Любимая игра удалена", "success"));
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -187,7 +187,7 @@ export const deleteFavorite = (id) => async (dispatch) => {
 
 // Delete account & profile
 export const deleteAccount = () => async (dispatch) => {
-  if (window.confirm("Are you sure? This can NOT be undone!")) {
+  if (window.confirm("Вы уверены ? Аккаунт восставновить невозможно!")) {
     try {
       await api.delete("/users");
 

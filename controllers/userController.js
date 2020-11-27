@@ -181,7 +181,6 @@ exports.addFavoriteGamesForUser = async function (req, res) {
                 message: 'Некорректные данные'
             });
         }
-        console.log(req.body);
         const {title, platform, hours} = req.body;
         const newFavorite = {title, platform, hours};
 
@@ -203,8 +202,9 @@ exports.addFavoriteGamesForUser = async function (req, res) {
 exports.deleteFavoriteGamesForUser = async function (req, res) {
     try {
         const userProfile = await UserProfile.findOne({user: req.user.userId});
+
         userProfile.favorite = userProfile.favorite.filter(
-            (fav) => fav._id.toString() !== favId);
+            (fav) => fav._id.toString() !== req.params.favId);
         const result = await userProfile.save();
         res.status(200).json(result);
     } catch (e) {
