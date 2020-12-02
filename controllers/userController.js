@@ -74,7 +74,6 @@ exports.createOrUpdateUserProfile = async function (req, res) {
             youtube,
             steam
         } = req.body;
-        const userAvatar = await User.findById(req.user.userId);
 
         const profileFields = {
             user: req.user.userId,

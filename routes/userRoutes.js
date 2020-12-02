@@ -3,6 +3,8 @@ const router = express.Router();
 const auth = require('../util/authMIddeware');
 const userController = require('../controllers/userController');
 const {check} = require('express-validator');
+const multer = require('../config/multer');
+const uploadFile = require('../controllers/uploadController');
 
 router.get('/users/me', auth.authValidate, userController.getMyProfile);
 router.get('/users', userController.getUsers);
@@ -32,6 +34,6 @@ router.put('/users/recent', auth.authValidate, [
 
 router.delete('/users/recent/:id', auth.authValidate, userController.deleteRecentlyPlayedGames);
 
-
+router.post('/upload', auth.authValidate, multer.single('file'), uploadFile.uploadFiles);
 
 module.exports = router;

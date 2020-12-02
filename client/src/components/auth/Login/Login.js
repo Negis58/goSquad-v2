@@ -56,7 +56,7 @@ const Login = ({login, isAuthenticated}) => {
                     </div>
                     <div className="login__form__group">
                         <Link to="/"><p className="form__forgot-password">Забыли пароль?</p></Link>
-                        <input type="submit" className="btn btn-primary" value="Login"/>
+                        <input type="submit" className="btn btn-primary" value="Войти"/>
                     </div>
                 </form>
             </div>

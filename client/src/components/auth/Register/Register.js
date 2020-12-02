@@ -76,7 +76,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                         />
                     </div>
                     <div className="register__form__group">
-                        <input type="submit" className="btn btn-primary" value="Register"/>
+                        <input type="submit" className="btn btn-primary" value="Регистрация"/>
                     </div>
                 </form>
                 <p>

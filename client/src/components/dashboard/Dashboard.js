@@ -39,8 +39,8 @@ const Dashboard = ({
       ) : (
         <Fragment>
           <p>Вы еще не настроили профиль, пожалуйста, добавьте информацию</p>
-          <Link to="/create-profile" className="btn btn-primary my-1">
-            Create Profile
+          <Link to="/create-profile" className="btn btn-gosquad my-1">
+            Создать профиль
           </Link>
         </Fragment>
       )}

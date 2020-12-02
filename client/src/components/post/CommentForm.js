@@ -29,7 +29,7 @@ const CommentForm = ({ postId, addComment }) => {
           onChange={(e) => setText(e.target.value)}
           required
         />
-        <input type="submit" className="btn btn-gosquad my-1" value="Submit" />
+        <input type="submit" className="btn btn-gosquad my-1" value="Отправить" />
       </form>
     </div>
   );

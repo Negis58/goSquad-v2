@@ -2,11 +2,12 @@ import React, {Fragment, useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {createProfile, getCurrentProfile} from "../../../actions/profile";
+import {createProfile, getCurrentProfile, uploadFile} from "../../../actions/profile";
 import Discord from '../../../img/discord.jpg'
 import Youtube from '../../../img/youtube.jpg'
 import Steam from '../../../img/steam.jpg'
 import './ProfileForm.scss';
+import apiFile from "../../../utils/apiFile";
 
 const initialState = {
     firstname: "",
@@ -20,9 +21,9 @@ const initialState = {
     steam: "",
 };
 
-const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProfile, history,}) => {
+const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProfile, history, uploadFile}) => {
     const [formData, setFormData] = useState(initialState);
-
+    const [file, setFile] = useState();
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
 
@@ -62,6 +63,12 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
         createProfile(formData, history, profile ? true : false);
     };
 
+    const send = event => {
+        const data = new FormData();
+        data.append("file", file);
+        uploadFile(data);
+    };
+
     return (
         <Fragment>
             <div className="profile-form">
@@ -71,6 +78,29 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                         <i className="fas fa-user"/> Добавьте некоторые изменения в свой профиль
                     </p>
                     <small className="text-color">* = Обязательные поля</small>
+                    <div className="form-group">
+                        <small className="form-text form-color">
+                            Загрузите изображение
+                        </small>
+                        <form action="#">
+                            <div className="form-group">
+                                <input
+                                    className="btn btn-gosquad my-1"
+                                    type="file"
+                                    id="file"
+                                    accept=".jpg"
+                                    onChange={event => {
+                                        const file = event.target.files[0];
+                                        setFile(file);
+                                    }}
+                                />
+                            </div>
+                        </form>
+                        <button
+                            className="btn btn-gosquad my-1"
+                            onClick={send}>Отправить
+                        </button>
+                    </div>
                     <form className="profile__form" onSubmit={onSubmit}>
                         <div className="form-group">
                             <select name="status" value={status} onChange={onChange}>
@@ -126,7 +156,8 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                         </div>
                         <div className="form-group">
                             <small className="form-text form-color">
-                                Пожалуйста, введите игровые платформы, которые вы используете (PS4, Xbox One, PC, Mobile)
+                                Пожалуйста, введите игровые платформы, которые вы используете (PS4, Xbox One, PC,
+                                Mobile)
                             </small>
                             <input
                                 type="text"
@@ -209,12 +240,13 @@ ProfileForm.propTypes = {
     createProfile: PropTypes.func.isRequired,
     getCurrentProfile: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
+    uploadFile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
     profile: state.profile,
 });
 
-export default connect(mapStateToProps, {createProfile, getCurrentProfile})(
+export default connect(mapStateToProps, {createProfile, getCurrentProfile, uploadFile})(
     ProfileForm
 );

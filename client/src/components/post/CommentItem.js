@@ -7,7 +7,7 @@ import { deleteComment } from "../../actions/post";
 
 const CommentItem = ({
   postId,
-  comment: { _id, text, username, avatar, commentedBy, date },
+  comment: { _id, text, username, commentedBy,avatar, date },
   auth,
   deleteComment,
 }) => (

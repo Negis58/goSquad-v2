@@ -22,10 +22,12 @@ exports.createPost = async function (req, res) {
             text: req.body.text,
             postedBy: user._id,
             name: user.username,
-            avatar: user.avatar
         });
         const post = await newPost.save();
-        res.status(200).json(post);
+        const postResult = await Post.findById(post._id)
+            .populate('postedBy', ['username', 'avatar']);
+        console.log(postResult)
+        res.status(200).json(postResult);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }
@@ -36,7 +38,8 @@ exports.createPost = async function (req, res) {
 
 exports.getPosts = async function (req, res) {
     try {
-        const posts = await Post.find().sort({date: -1});
+        const posts = await Post.find().sort({date: -1})
+            .populate('postedBy', ['username', 'avatar']);
         res.status(200).json(posts);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
@@ -48,7 +51,8 @@ exports.getPosts = async function (req, res) {
 
 exports.getPostById = async function (req, res) {
     try {
-        const post = await Post.findById(req.params.id);
+        const post = await Post.findById(req.params.id)
+            .populate('postedBy', ['username', 'avatar']);
         if (!post) {
             res.status(404).json({message: 'Пост не найден'});
         }
