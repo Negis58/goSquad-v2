@@ -18,6 +18,7 @@ exports.createPost = async function (req, res) {
         const user = await User.findById(req.user.userId).select('-password');
 
         const newPost = new Post({
+            title: req.body.title,
             text: req.body.text,
             postedBy: user._id,
             name: user.username,
