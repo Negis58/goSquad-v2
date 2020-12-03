@@ -42,7 +42,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                   ))}
                 </Fragment>
               ) : (
-                <h4>Нет недавно сыгранных игр</h4>
+                <h4 className="text-white">Нет недавно сыгранных игр</h4>
               )}
             </div>
 
@@ -55,7 +55,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                   ))}
                 </Fragment>
               ) : (
-                <h4>Нет любимых игр</h4>
+                <h4 className="text-white">Нет любимых игр</h4>
               )}
             </div>
           </div>

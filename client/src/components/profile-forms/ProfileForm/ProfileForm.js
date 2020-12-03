@@ -80,7 +80,7 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                     <small className="text-color">* = Обязательные поля</small>
                     <div className="form-group">
                         <small className="form-text form-color">
-                            Загрузите изображение
+                            Загрузите изображение профиля
                         </small>
                         <form action="#">
                             <div className="form-group">

@@ -140,7 +140,11 @@ exports.commentPost = async function (req, res) {
         post.comments.unshift(newComment);
 
         await post.save();
-        res.json(post.comments);
+
+        const postResult = await Post.findById(req.params.id);
+
+        res.json(postResult.comments);
+        //res.json(result);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }

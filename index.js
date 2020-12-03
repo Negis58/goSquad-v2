@@ -15,8 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 connectDB().then(() => console.log('MongoDB connected...'));
 
-
-
 app.listen(PORT, () => console.log(`App has been started on port ${PORT}`));
 
 app.use('/api',  userRoute);
