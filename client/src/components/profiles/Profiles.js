@@ -28,7 +28,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                 <ProfileItem key={profile._id} profile={profile} />
               ))
             ) : (
-              <h4>Профилей не найдено...</h4>
+              <h4 className="text-color-white">Профилей не найдено...</h4>
             )}
           </div>
         </Fragment>

@@ -15,10 +15,10 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
                 <Link to="/posts">Посты</Link>
             </li>
             <li>
-                <Link to="/dashboard">
-                    <i/>{" "}
-                    <span>Профиль</span>
-                </Link>
+                <Link to="/dashboard">Профиль</Link>
+            </li>
+            <li>
+                <Link to="/chat-join">Чат</Link>
             </li>
             <li>
                 <a onClick={logout} href="/">

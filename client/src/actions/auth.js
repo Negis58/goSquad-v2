@@ -7,7 +7,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT, FORGOT_FAIL, FORGOT_PASSWORD, REFRESH_PASSWORD, REFRESH_PASSWORD_FAIL
 } from './types';
 
 // Load User
@@ -40,7 +40,7 @@ export const register = formData => async dispatch => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach(error => dispatch(setAlert(error.message, 'danger')));
     }
 
     dispatch({
@@ -64,9 +64,9 @@ export const login = (username, password) => async dispatch => {
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
-
+    console.log(errors);
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach(error => dispatch(setAlert(error.message, 'danger')));
     }
 
     dispatch({
@@ -77,3 +77,49 @@ export const login = (username, password) => async dispatch => {
 
 // Logout
 export const logout = () => ({ type: LOGOUT });
+
+export const forgotPassword = formData => async dispatch => {
+  try {
+    const res = await api.post('/forgot-password', formData);
+    console.log(res, '123');
+    dispatch({
+      type: FORGOT_PASSWORD,
+      payload: res.data
+    });
+    dispatch(setAlert('На вашу почту отправлено письмо с дальнейшими указаниями'));
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.message, 'danger')));
+    }
+
+    dispatch({
+      type: FORGOT_FAIL
+    });
+  }
+};
+
+export const refreshPassword = (refreshToken, password) => async dispatch => {
+  try {
+    const formData = {refreshToken, password}
+    console.log(formData);
+    const res = await api.post('/reset-password', formData);
+    console.log(res, '123');
+    dispatch({
+      type: REFRESH_PASSWORD,
+      payload: res.data
+    });
+    dispatch(setAlert('Пароль изменен'));
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.message, 'danger')));
+    }
+
+    dispatch({
+      type: REFRESH_PASSWORD_FAIL
+    });
+  }
+};

@@ -104,7 +104,8 @@ exports.forgotPassword = async function (req, res) {
             res.status(500).json({message: 'Для восстановления пароля требуется электронная почта'});
         }
         let response = await authService.forgotPassword(req.body.email);
-        res.status(response.status).json(response);
+        console.log(response.result, 'forgot-password')
+        res.status(response.status).json(response.result);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }
@@ -112,8 +113,9 @@ exports.forgotPassword = async function (req, res) {
 
 exports.resetPassword = async function (req, res) {
     try {
-        let response = await authService.resetPassword(req.body.token, req.body.password);
-        res.status(response.status).json(response);
+        console.log(req.body);
+        let response = await authService.resetPassword(req.body.refreshToken, req.body.password);
+        res.status(response.status).json(response.result);
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'});
     }

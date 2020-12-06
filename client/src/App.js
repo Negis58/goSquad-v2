@@ -13,6 +13,9 @@ import {loadUser} from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import Register from "./components/auth/Register/Register";
 import Login from "./components/auth/Login/Login";
+import ForgotPassword from "./components/auth/Forgot-password/Forgot-password";
+import RefreshPassword from "./components/auth/Refresh-password/Refresh-password";
+import Alert from "./components/layout/Alert/Alert";
 
 
 const App = () => {
@@ -32,10 +35,13 @@ const App = () => {
     return (
         <Provider store={store}>
             <Router>
+                <Alert/>
                 <Switch>
                     <Route exact path="/" component={Landing}/>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/login" component={Login}/>
+                    <Route exact path="/forgot-password" component={ForgotPassword}/>
+                    <Route exact path="/new-password/" component={RefreshPassword}/>
                     <Route component={<Navbar/> && Routes}/>
                 </Switch>
             </Router>

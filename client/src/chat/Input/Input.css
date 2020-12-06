@@ -1,0 +1,39 @@
+.form-input-text {
+    display: flex;
+    border-top: 2px solid #81DC18;
+}
+
+.input-text {
+    border: none;
+    border-radius: 0;
+    padding: 5%;
+    width: 80%;
+    background: #171717;
+    color: white;
+    font-size: 1.2em;
+}
+/*
+input::-webkit-input-placeholder { color: white; }
+input::-moz-placeholder { color: white; }
+*/
+
+
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+.button-input-send {
+    border-color: #81DC18;
+    font-size: 20px;
+    color: white;
+    background: #171717;
+    border-radius: 5px;
+    width: 30%;
+    height: 100%;
+}
+
+.button-input-send:hover {
+    color: #171717;
+    background: #81DC18;
+}

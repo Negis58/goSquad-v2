@@ -3,7 +3,6 @@ import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {login} from '../../../actions/auth';
-import {Button, Form, Input} from "antd";
 import './Login.scss';
 
 const Login = ({login, isAuthenticated}) => {
@@ -55,7 +54,7 @@ const Login = ({login, isAuthenticated}) => {
                         />
                     </div>
                     <div className="login__form__group">
-                        <Link to="/"><p className="form__forgot-password">Забыли пароль?</p></Link>
+                        <Link to="/forgot-password"><p className="form__forgot-password">Забыли пароль?</p></Link>
                         <input type="submit" className="btn btn-primary" value="Войти"/>
                     </div>
                 </form>

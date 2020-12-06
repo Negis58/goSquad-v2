@@ -6,7 +6,7 @@
     "tokens": {
       "access": {
         "type": "access",
-        "expiresIn": "1d"
+        "expiresIn": "30d"
       },
       "refresh": {
         "type": "refresh",
@@ -14,7 +14,7 @@
       }
     }
   },
-  "forgotPasswordURL": "http://localhost:5000",
+  "forgotPasswordURL": "http://localhost:3000",
   "mailerEmail": "gosquadtest@gmail.com",
   "mailerPassword": "GoSquadTest123",
   "cloudinary": {

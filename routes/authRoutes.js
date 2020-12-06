@@ -14,7 +14,7 @@ router.post('/register', [
 ], authController.register);
 
 router.post('/login', [
-    check('username', '').exists(),
+    check('username', 'Введите имя пользователя').exists(),
     check('password', 'Введите пароль').exists()
 ], authController.login);
 
@@ -22,7 +22,6 @@ router.get('/login', auth.authValidate, authController.loginGetProfile);
 
 router.post('/forgot-password', [
     check('email', 'Некорректный email').isEmail(),
-    check('password', 'Введите пароль').exists()
 ], authController.forgotPassword);
 
 

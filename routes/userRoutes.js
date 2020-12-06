@@ -36,4 +36,5 @@ router.delete('/users/recent/:id', auth.authValidate, userController.deleteRecen
 
 router.post('/upload', auth.authValidate, multer.single('file'), uploadFile.uploadFiles);
 
+
 module.exports = router;

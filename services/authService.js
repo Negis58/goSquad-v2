@@ -19,8 +19,8 @@ async function forgotPassword(email) {
     await User.updateOne({_id: user.id}, {$set: {resetToken: token}});
     let text = 'Вы получили это письмо, потому что вы запросили сброс пароля для своей учетной записи. \n\n' +
         'Пожалуйста, перейдите по ссылке или вставьте ее в своей браузер,' +
-        'чтобы завершить процесс восстановления пароля: \n\n' + forgotPasswordURL + '/new-password/' + token +
-        'Если вы не запрашивали восстановления пароля, проигнорируйте это письмо, и ваш пароль останется преждним';
+        'чтобы завершить процесс восстановления пароля: \n\n' + forgotPasswordURL + '/new-password?refreshToken=' + token +
+        '\n\n Если вы не запрашивали восстановления пароля, проигнорируйте это письмо, и ваш пароль останется преждним';
     await mailerService.sendEmail(email, 'Password Reset', text);
 
     return new ApiResponse(200, 'success',
@@ -29,6 +29,7 @@ async function forgotPassword(email) {
 
 async function resetPassword(token, newPassword) {
     let user = await User.findOne({resetToken: token});
+    console.log(token, newPassword)
     if (!user) {
         return new ApiResponse(401, 'error',
             {message: 'Недействительная ссылка для сброса пароля'});
