@@ -1,6 +1,8 @@
 const express = require('express');
 const config = require('config');
 const connectDB = require('./config/db');
+const path = require('path');
+
 const authRoute = require('./routes/authRoutes');
 const userRoute = require('./routes/userRoutes');
 const postRoute = require('./routes/postRoutes');
@@ -30,12 +32,14 @@ app.use('/api', authRoute);
 app.use('/api',  postRoute);
 app.use(chatRoute);
 
+
 if (process.env.NODE_ENV === "production") {
+    console.log('123')
 
-    app.use(express.static("client/build"));
-
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    app.use(express.static(path.join(__dirname, './client/build')));
+// Handle React routing, return all requests to React app
+    app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, './client/build', 'index.html'));
     });
 }
 io.on('connect', (socket) => {
