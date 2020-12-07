@@ -11,8 +11,8 @@ import Posts from "../posts/Posts";
 import Post from "../post/Post";
 import PrivateRoute from "../routing/PrivateRoute";
 import Navbar from "../layout/Navbar/Navbar";
-import Join from "../../chat/Join/Join";
-import Chat from "../../chat/Chat/Chat";
+import Join from "../Join/Join";
+import Chat from "../Chat/Chat";
 
 const Routes = (props) => {
     return (
