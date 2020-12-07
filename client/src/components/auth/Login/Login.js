@@ -29,7 +29,7 @@ const Login = ({login, isAuthenticated}) => {
     return (
         <div className="login">
             <div className="login__top">
-                <h1>GOSQUAD</h1>
+                <Link to="/"><h1>GOSQUAD</h1></Link>
                 <h2>Войти в аккаунт</h2>
                 <h6>Пожалуйста, войдите в свой аккаунт</h6>
                 <form className="login__form" onSubmit={onSubmit}>

@@ -209,6 +209,7 @@ export const uploadFile = (data) => async (dispatch) => {
         console.log(data);
         const res = await api.post("/upload", data);
 
+
         dispatch({
             type: UPLOAD_FILE,
             payload: res.data,

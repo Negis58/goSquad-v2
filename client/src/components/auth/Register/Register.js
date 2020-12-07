@@ -35,7 +35,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
     return (
         <div className="register">
             <div className="register__top">
-                <h1>GOSQUAD</h1>
+                <Link to="/"><h1>GOSQUAD</h1></Link>
                 <h2>Зарегистрируйте аккаунт</h2>
                 <h6>Пожалуйста, введите данные</h6>
                 <form className="register__form" onSubmit={onSubmit}>

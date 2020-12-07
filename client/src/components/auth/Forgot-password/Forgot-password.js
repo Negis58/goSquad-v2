@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {forgotPassword} from '../../../actions/auth';
 import PropTypes from 'prop-types';
 import {setAlert} from "../../../actions/alert";
@@ -28,7 +28,7 @@ const ForgotPassword = ({forgotPassword, isAuthenticated}) => {
     return (
         <div className="register">
             <div className="register__top">
-                <h1>GOSQUAD</h1>
+                <Link to="/"><h1>GOSQUAD</h1></Link>
                 <h2>Восстановление пароля</h2>
                 <h6>Пожалуйста, введите адрес электронной почты</h6>
                 <form className="register__form" onSubmit={onSubmit}>

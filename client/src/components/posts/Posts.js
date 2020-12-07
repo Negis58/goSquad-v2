@@ -13,7 +13,7 @@ const Posts = ({ getPosts, post: { posts } }) => {
 
   return (
     <Fragment>
-         <h1 className="large text-color">Посты</h1>
+         <h1 className="large text-color mt-2">Посты</h1>
          <p className="lead">
              <i className="fas fa-user" /> Добро пожаловать в лучшее игровое сообщество
          </p>

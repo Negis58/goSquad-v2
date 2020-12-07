@@ -17,12 +17,10 @@ import Chat from "../../chat/Chat/Chat";
 const Routes = (props) => {
     return (
         <Fragment>
-            <Alert/>
             <Navbar/>
             <Switch>
                 <Route exact path="/chat-join" component={Join}/>
                 <Route exact path="/chat" component={Chat}/>
-
                 <section className="container">
                     <Route exact path="/profiles" component={Profiles}/>
                     <Route exact path="/profile/:id" component={Profile}/>
