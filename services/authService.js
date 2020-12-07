@@ -17,7 +17,7 @@ async function forgotPassword(email) {
     console.log(user);
     let token = crypto.randomBytes(16).toString('hex');
     await User.updateOne({_id: user.id}, {$set: {resetToken: token}});
-    let text = 'Вы получили это письмо, потому что вы запросили сброс пароля для своей учетной записи. \n\n' +
+    let text = 'Вы запросили сброс пароля для своей учетной записи. \n\n' +
         'Пожалуйста, перейдите по ссылке или вставьте ее в своей браузер,' +
         'чтобы завершить процесс восстановления пароля: \n\n' + forgotPasswordURL + '/new-password?refreshToken=' + token +
         '\n\n Если вы не запрашивали восстановления пароля, проигнорируйте это письмо, и ваш пароль останется преждним';
