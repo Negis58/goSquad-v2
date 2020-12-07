@@ -13,7 +13,7 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./services/cha
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-const PORT = config.get('port') || 5000;
+const PORT = config.get('port') || 5000 || process.env.PORT;
 const cors = require('cors');
 
 
@@ -30,6 +30,11 @@ app.use('/api', authRoute);
 app.use('/api',  postRoute);
 app.use(chatRoute);
 
+app.use(express.static("client/build"));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 io.on('connect', (socket) => {
     socket.on('join', ({ name, room }, callback) => {

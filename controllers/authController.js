@@ -33,7 +33,7 @@ exports.register = async function (req, res) {
             password: hashedPassword
         });
         const result = await user.save();
-
+        await authService.registerSuccess(email);
         const tokens = await authService.updateTokens(result._id);
         const resultTokens = {tokens};
         res.status(200).json(resultTokens);

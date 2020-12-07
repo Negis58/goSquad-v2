@@ -44,6 +44,11 @@ async function resetPassword(token, newPassword) {
 
 }
 
+async function registerSuccess(email) {
+    let text = 'Вы зарегистрировались в лучшем игровом сообществе GOSQUAD';
+    await mailerService.sendEmail(email, 'Register Success', text);
+}
+
 const updateTokens = (userId) => {
     const accessToken = authHelper.generateAccessToken(userId);
     const refreshToken = authHelper.generateRefreshToken();
@@ -55,4 +60,4 @@ const updateTokens = (userId) => {
 }
 
 
-module.exports = { forgotPassword, resetPassword, updateTokens};
+module.exports = { forgotPassword, resetPassword, updateTokens, registerSuccess};
