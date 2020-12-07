@@ -7,7 +7,7 @@ import Discord from '../../../img/discord.jpg'
 import Youtube from '../../../img/youtube.jpg'
 import Steam from '../../../img/steam.jpg'
 import './ProfileForm.scss';
-import apiFile from "../../../utils/apiFile";
+import {setAlert} from "../../../actions/alert";
 
 const initialState = {
     firstname: "",
@@ -64,9 +64,11 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
     };
 
     const send = event => {
+        event.preventDefault();
         const data = new FormData();
         data.append("file", file);
         uploadFile(data);
+        alert('Изображение профиля изменено');
     };
 
     return (

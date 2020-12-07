@@ -10,7 +10,7 @@ import {
     ACCOUNT_DELETED, UPLOAD_FILE,
 } from "./types";
 
-// Get current users profile
+// Получение текущего пользователя
 export const getCurrentProfile = () => async (dispatch) => {
     try {
         const res = await api.get("/users/me");
@@ -26,7 +26,7 @@ export const getCurrentProfile = () => async (dispatch) => {
     }
 };
 
-// Get all profiles
+// Получить все профили
 export const getProfiles = () => async (dispatch) => {
     dispatch({type: CLEAR_PROFILE});
 
@@ -45,7 +45,7 @@ export const getProfiles = () => async (dispatch) => {
     }
 };
 
-// Get profile by ID
+// Получение профиля по id
 export const getProfileById = (userId) => async (dispatch) => {
     try {
         const res = await api.get(`/users/${userId}`);
@@ -62,7 +62,7 @@ export const getProfileById = (userId) => async (dispatch) => {
     }
 };
 
-// Create or update profile
+// Создание или обновление профиля
 export const createProfile = (formData, history, edit = false) => async (
     dispatch
 ) => {
@@ -74,7 +74,7 @@ export const createProfile = (formData, history, edit = false) => async (
             payload: res.data,
         });
 
-        dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
+        dispatch(setAlert(edit ? "Профиль обновлен" : "Профиль создан", "success"));
 
         if (!edit) {
             history.push("/dashboard");
@@ -93,7 +93,7 @@ export const createProfile = (formData, history, edit = false) => async (
     }
 };
 
-// Add recently played game
+// Добалвение последних игр
 export const addRecent = (formData, history) => async (dispatch) => {
     try {
         const res = await api.put("/users/recent", formData);
@@ -120,7 +120,7 @@ export const addRecent = (formData, history) => async (dispatch) => {
     }
 };
 
-// Add favorite games
+// Добавление любимых игр
 export const addFavorite = (formData, history) => async (dispatch) => {
     try {
         const res = await api.put("/users/favorite", formData);
@@ -147,7 +147,7 @@ export const addFavorite = (formData, history) => async (dispatch) => {
     }
 };
 
-// Delete recently played game
+// Удаление последних игр
 export const deleteRecent = (id) => async (dispatch) => {
     try {
         const res = await api.delete(`/users/recent/${id}`);
@@ -166,7 +166,7 @@ export const deleteRecent = (id) => async (dispatch) => {
     }
 };
 
-// Delete Favorite Games
+// Удаление любимых игр
 export const deleteFavorite = (id) => async (dispatch) => {
     try {
         const res = await api.delete(`/users/favorite/${id}`);
@@ -185,7 +185,7 @@ export const deleteFavorite = (id) => async (dispatch) => {
     }
 };
 
-// Delete account & profile
+// Удаление аккаунта и профиля
 export const deleteAccount = () => async (dispatch) => {
     if (window.confirm("Вы уверены ? Аккаунт восставновить невозможно!")) {
         try {
@@ -204,18 +204,17 @@ export const deleteAccount = () => async (dispatch) => {
     }
 }
 
+// Загрузка изображения пользователя
 export const uploadFile = (data) => async (dispatch) => {
     try {
         console.log(data);
         const res = await api.post("/upload", data);
-
+        console.log(res);
 
         dispatch({
             type: UPLOAD_FILE,
             payload: res.data,
         });
-
-        dispatch(setAlert("Изображение профиля добавлено", "success"));
 
     } catch (err) {
         const errors = err.response.data.errors;

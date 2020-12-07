@@ -11,7 +11,7 @@ import {
   REMOVE_COMMENT,
 } from "./types";
 
-// Get posts
+// Получение всех постов
 export const getPosts = () => async (dispatch) => {
   try {
     const res = await api.get("/post");
@@ -28,7 +28,7 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
-// Add like
+// Добавление лайка к посту
 export const addLike = (id) => async (dispatch) => {
   try {
     console.log(id);
@@ -46,7 +46,7 @@ export const addLike = (id) => async (dispatch) => {
   }
 };
 
-// Remove like
+// Удаление лайка с поста
 export const removeLike = (id) => async (dispatch) => {
   try {
     const res = await api.put(`/post/unlike/${id}`);
@@ -63,7 +63,7 @@ export const removeLike = (id) => async (dispatch) => {
   }
 };
 
-// Delete post
+// Удаление поста
 export const deletePost = (id) => async (dispatch) => {
   try {
     console.log(id);
@@ -83,7 +83,7 @@ export const deletePost = (id) => async (dispatch) => {
   }
 };
 
-// Add post
+// Добавление поста
 export const addPost = (formData) => async (dispatch) => {
   try {
     const res = await api.post("/post", formData);
@@ -102,7 +102,7 @@ export const addPost = (formData) => async (dispatch) => {
   }
 };
 
-// Get post
+// Получить конкретный пост
 export const getPost = (id) => async (dispatch) => {
   try {
     const res = await api.get(`/post/${id}`);
@@ -119,7 +119,7 @@ export const getPost = (id) => async (dispatch) => {
   }
 };
 
-// Add comment
+// Добавить комментарий
 export const addComment = (postId, formData) => async (dispatch) => {
   try {
     const res = await api.post(`/post/comment/${postId}`, formData);
@@ -138,7 +138,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
   }
 };
 
-// Delete comment
+// Удалить комментарий
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
     await api.delete(`/post/comment/${postId}/${commentId}`);

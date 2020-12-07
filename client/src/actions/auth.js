@@ -10,7 +10,7 @@ import {
   LOGOUT, FORGOT_FAIL, FORGOT_PASSWORD, REFRESH_PASSWORD, REFRESH_PASSWORD_FAIL
 } from './types';
 
-// Load User
+// Аутентификация пользователяи по и получение его данных
 export const loadUser = () => async dispatch => {
   try {
     const res = await api.get('/login');
@@ -26,7 +26,7 @@ export const loadUser = () => async dispatch => {
   }
 };
 
-// Register User
+// Регистрация пользователя
 export const register = formData => async dispatch => {
   try {
     const res = await api.post('/register', formData);
@@ -49,13 +49,12 @@ export const register = formData => async dispatch => {
   }
 };
 
-// Login User
+// Аутентификация пользователя
 export const login = (username, password) => async dispatch => {
   const body = { username, password };
 
   try {
     const res = await api.post('/login', body);
-    //console.log(res.data.tokens.accessToken);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data.tokens
@@ -75,9 +74,10 @@ export const login = (username, password) => async dispatch => {
   }
 };
 
-// Logout
+// Выход из аккаунта
 export const logout = () => ({ type: LOGOUT });
 
+// Восстановление пароля
 export const forgotPassword = formData => async dispatch => {
   try {
     const res = await api.post('/forgot-password', formData);
@@ -100,6 +100,7 @@ export const forgotPassword = formData => async dispatch => {
   }
 };
 
+// Новый пароль
 export const refreshPassword = (refreshToken, password) => async dispatch => {
   try {
     const formData = {refreshToken, password}
