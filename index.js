@@ -31,7 +31,7 @@ app.use('/api',  postRoute);
 app.use(chatRoute);
 
 if (process.env.NODE_ENV === "production") {
-    // Set static folder
+
     app.use(express.static("client/build"));
 
     app.get("*", (req, res) => {
