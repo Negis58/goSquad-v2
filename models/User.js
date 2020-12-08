@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     avatar: {
         type: String,
@@ -20,17 +21,6 @@ const UserSchema = new mongoose.Schema({
     },
     resetToken: {
         type: String
-    },
-    confirmHash: {
-        type: String
-    },
-    confirmed: {
-        type: Boolean,
-        default: false
-    },
-    lastSeen: {
-        type: Date,
-        default: Date.now
     }
 
 }, {timestamp: true});

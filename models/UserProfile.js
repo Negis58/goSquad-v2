@@ -13,10 +13,6 @@ const UserProfileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    birthdate: {
-        type: Date,
-        default: Date.now
-    },
     location: {
         type: String
     },
@@ -65,23 +61,6 @@ const UserProfileSchema = new mongoose.Schema({
             }
         }
     ],
-    followers: [
-        {
-            follower: {
-                type: mongoose.Types.ObjectId,
-                ref: 'user'
-            }
-        }
-    ],
-    following: [
-        {
-            follower: {
-                type: mongoose.Types.ObjectId,
-                ref: 'user'
-            }
-        }
-    ],
-    photo: {},
     recent: [
         {
             title: {
