@@ -41,7 +41,7 @@ const RefreshPassword = ({refreshPassword, isAuthenticated, location}) => {
         <div className="register">
             <div className="register__top">
                <Link to="/login"> <h1>GOSQUAD</h1></Link>
-                <h2>Зарегистрируйте аккаунт</h2>
+                <h2>Восстановление пароля</h2>
                 <h6>Пожалуйста, введите данные</h6>
                 <form className="register__form" onSubmit={onSubmit}>
                     <div className="register__form__group">

@@ -42,7 +42,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                     <div className="register__form__group">
                         <input
                             type="text"
-                            placeholder="Username"
+                            placeholder="Имя пользователя"
                             name="username"
                             value={username}
                             onChange={onChange}
@@ -60,7 +60,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                     <div className="register__form__group">
                         <input
                             type="password"
-                            placeholder="Password"
+                            placeholder="Пароль"
                             name="password"
                             value={password}
                             onChange={onChange}
@@ -69,7 +69,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                     <div className="register__form__group">
                         <input
                             type="password"
-                            placeholder="Confirm Password"
+                            placeholder="Повторите пароль"
                             name="password2"
                             value={password2}
                             onChange={onChange}
@@ -80,7 +80,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                     </div>
                 </form>
                 <p>
-                    Уже имеете аккаунт? <Link to="/login">Sign In</Link>
+                    Уже имеете аккаунт? <Link to="/login">Войти</Link>
                 </p>
             </div>
         </div>

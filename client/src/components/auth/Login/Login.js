@@ -36,7 +36,7 @@ const Login = ({login, isAuthenticated}) => {
                     <div className="login__form__group">
                         <input
                             type="text"
-                            placeholder="Username"
+                            placeholder="Имя пользователя"
                             name="username"
                             value={username}
                             onChange={onChange}
@@ -46,11 +46,11 @@ const Login = ({login, isAuthenticated}) => {
                     <div className="login__form__group">
                         <input
                             type="password"
-                            placeholder="Password"
+                            placeholder="Пароль"
                             name="password"
                             value={password}
                             onChange={onChange}
-                            minLength="6"
+                            minLength="8"
                         />
                     </div>
                     <div className="login__form__group">
