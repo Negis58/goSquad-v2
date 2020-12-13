@@ -51,7 +51,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
                     <div className="register__form__group">
                         <input
                             type="email"
-                            placeholder="Email Address"
+                            placeholder="Адрес электронной почты"
                             name="email"
                             value={email}
                             onChange={onChange}
