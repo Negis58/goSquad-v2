@@ -19,10 +19,9 @@ exports.sendEmail = async function (email, subject, text)  {
         subject: subject,
         text: text
     };
-
-    let result = await transporter.sendMail(mailOptions,(err,info) =>{
-        if (err) return console.log(err)
-        console.log('info', info)
-    });
+        let result = await transporter.sendMail(mailOptions,(err,info) =>{
+            if (err) return console.log(err)
+            console.log('info', info)
+        });
     return result;
 };

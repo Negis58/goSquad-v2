@@ -4,16 +4,16 @@ import './Profile.scss';
 
 const ProfileAbout = ({
   profile: {
-    bio,
+    about,
     platform,
-    user: { name },
+    user: { username },
   },
 }) => (
   <div className="profile-about  p-2">
-    {bio && (
+    {about && (
       <Fragment>
-        <h2 className="text-primary">{name.trim().split(" ")[0]}&#39;s Bio</h2>
-        <p>{bio}</p>
+        <h2 className="text-color">{username} о себе</h2>
+        <p>{about}</p>
         <div className="line" />
       </Fragment>
     )}
