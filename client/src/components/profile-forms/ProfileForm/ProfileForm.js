@@ -108,7 +108,7 @@ const ProfileForm = ({profile: {profile, loading}, createProfile, getCurrentProf
                             <select name="status" value={status} onChange={onChange}>
                                 <option>* Выберете игровой статус</option>
                                 <option value="Classic Gamer">Обычный игрок</option>
-                                <option value="Лучший игрок лол">Задрот лола</option>
+                                <option value="Лучший игрок лол">Лучший игрок лола</option>
                                 <option value="Нормальный человек">Нормальный человек</option>
                                 <option value="Игрок в доту">Игрок в доту</option>
                                 <option value="Игрок в хс">Игрок в хс</option>
