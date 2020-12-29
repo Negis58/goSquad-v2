@@ -35,7 +35,7 @@ const ForgotPassword = ({forgotPassword, isAuthenticated}) => {
                     <div className="register__form__group">
                         <input
                             type="email"
-                            placeholder="Email Address"
+                            placeholder="Введите адрес электронной почты"
                             name="email"
                             value={email}
                             onChange={onChange}

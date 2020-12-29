@@ -11,7 +11,7 @@ exports.sendEmail = async function (email, subject, text)  {
             user: mailerEmail,
             pass: config.get('mailerPassword')
         }
-    });
+    }); 
 
     let mailOptions = {
         to: email,
