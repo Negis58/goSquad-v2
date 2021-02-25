@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 const config = require('config');
-const mailerEmail = config.get('mailerEmail');
+const mailerEmail = process.env.MAILER_EMAIL;
 
 exports.sendEmail = async function (email, subject, text)  {
     let transporter = nodemailer.createTransport({
@@ -9,7 +9,7 @@ exports.sendEmail = async function (email, subject, text)  {
         secure: false,
         auth: {
             user: mailerEmail,
-            pass: config.get('mailerPassword')
+            pass: process.env.MAILER_PASSWORD
         }
     }); 
 

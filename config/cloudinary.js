@@ -1,8 +1,7 @@
 const cloudinary = require('cloudinary').v2;
-const config = require('config');
-const CLOUDINARY_NAME = config.get('cloudinary.cloud_name');
-const CLOUDINARY_API_KEY = config.get('cloudinary.api_key');
-const CLOUDINARY_API_SECRET = config.get('cloudinary.api_secret');
+const CLOUDINARY_NAME = process.env.CLOUDINARY_NAME;
+const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY;
+const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;
 
 cloudinary.config({
     cloud_name: CLOUDINARY_NAME,

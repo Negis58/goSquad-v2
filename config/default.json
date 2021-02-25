@@ -1,6 +1,5 @@
 {
   "port": 5000,
-  "mongoUri": "mongodb+srv://user:Mypass@cluster0.oxpya.mongodb.net/testprojectfinal?retryWrites=true&w=majority",
   "jwtToken": {
     "secret": "jwtsecret",
     "tokens": {
@@ -13,13 +12,5 @@
         "expiresIn": "1d"
       }
     }
-  },
-  "forgotPasswordURL": "http://localhost:3000",
-  "mailerEmail": "gosquadtest@gmail.com",
-  "mailerPassword": "GoSquadTest123",
-  "cloudinary": {
-    "cloud_name": "dxckouxlq",
-    "api_key": "439912644566591",
-    "api_secret": "VqdyjcpdUvB2azlYMcODJpZU8d8"
   }
 }

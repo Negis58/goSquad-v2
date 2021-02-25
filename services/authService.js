@@ -1,9 +1,8 @@
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
-const config = require('config');
 const User = require('../models/User');
 const ApiResponse = require('../util/response');
-const forgotPasswordURL = config.get('forgotPasswordURL');
+const forgotPasswordURL = process.env.FORGOT_PASSWORD_URL;
 const mailerService = require('../services/mailerService');
 const authHelper = require('../util/authHelper');
 

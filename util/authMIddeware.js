@@ -1,6 +1,5 @@
-const config = require('config');
 const jwt = require('jsonwebtoken');
-const secret = config.get('jwtToken.secret');
+const secret = process.env.JWT_SECRET;
 
 exports.authValidate = async function(req,res, next) {
     const token = req.header("x-auth-token");

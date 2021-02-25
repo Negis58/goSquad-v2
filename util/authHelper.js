@@ -1,6 +1,6 @@
 const config = require('config');
 const jwt = require('jsonwebtoken');
-const secret = config.get('jwtToken.secret');
+const secret = process.env.JWT_SECRET;
 const {uuid} = require('uuidv4');
 const Token = require('../models/Token');
 
