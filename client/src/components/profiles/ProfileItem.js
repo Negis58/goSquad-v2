@@ -14,7 +14,7 @@ const ProfileItem = ({
                              platform,
                              firstname,
                              lastname,
-                             bio,
+                             about,
                              social: {discord, youtube, steam}
                          },
                      }) => {
